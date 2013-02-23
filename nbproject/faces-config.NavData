@@ -2,8 +2,11 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="index.xhtml" x="36" y="536" zoom="true"/>
-        <Node id="inicio.xhtml" x="83" y="204" zoom="true"/>
+        <Node id="navbar.xhtml" x="236" y="25" zoom="true"/>
+        <Node id="cad_pac.xhtml" x="25" y="181" zoom="true"/>
+        <Node id="footer.xhtml" x="29" y="24" zoom="true"/>
+        <Node id="login.xhtml" x="37" y="539" zoom="true"/>
+        <Node id="index.xhtml" x="82" y="397" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

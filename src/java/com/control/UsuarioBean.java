@@ -9,7 +9,6 @@ import com.model.Usuario;
 import com.sun.faces.context.SessionMap;
 import java.io.Serializable;
 import javax.faces.context.FacesContext;
-import javax.jms.Session;
 
 /**
  *
@@ -47,7 +46,6 @@ public class UsuarioBean implements Serializable{
             return "Login_OK";
         }else{
             return "Login_ERROR";
-        }
-        
+        }   
     }
 }

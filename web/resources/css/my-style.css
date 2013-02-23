@@ -1,5 +1,33 @@
 @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
 
+body{
+    padding-top: 8px;
+
+}
+
+.nav {
+    margin-bottom: -15px;
+}
+
+h3 {
+    margin: 0;
+    margin-top: -4px;
+    padding: 0;
+    padding-right: 20px;
+    font-size: 21px;
+    text-align: center;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.hero-unit {
+    padding: 10px;
+}
+
 footer{
 	position:absolute;
 	text-align: center;
