@@ -15,12 +15,12 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>Login_OK</from-outcome>
-            <to-view-id>/menu.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
             <from-outcome>Login_ERROR</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Login_OK</from-outcome>
+            <to-view-id>/inicio.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>

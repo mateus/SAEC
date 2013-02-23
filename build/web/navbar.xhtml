@@ -1,0 +1,62 @@
+<ui:composition 
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html">
+    
+<div class="container"> 
+    <div class="masthead">
+        <ul class="nav nav-pills">
+          <li><h3 class="muted">Bem-vindo #{Usuario.usuario.usuario}</h3></li>
+          <li><a href="#">Início</a></li>   
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  Agenda <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                  <li><a href="#">Agendar</a></li>
+                  <li><a href="#">Cancelar</a></li>
+                  <li><a href="#">Listar</a></li>
+              </ul>
+          </li>
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  Exâme <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                  <li><a href="#">Cadastrar</a></li>
+                  <li><a href="#">Consultar</a></li>
+                  <li><a href="#">Alterar</a></li>
+                  <li><a href="#">Excluir</a></li>
+              </ul>
+          </li>
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  Médico <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                  <li><a href="#">Cadastrar</a></li>
+                  <li><a href="#">Consultar</a></li>
+                  <li><a href="#">Alterar</a></li>
+                  <li><a href="#">Excluir</a></li>
+              </ul>
+          </li>
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  Paciente <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                  <li><a href="#">Cadastrar</a></li>
+                  <li><a href="#">Consultar</a></li>
+                  <li><a href="#">Alterar</a></li>
+                  <li><a href="#">Excluir</a></li>
+              </ul>
+          </li> 
+          <ul class="nav nav-pills pull-right">
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Sair</a></li>
+          </ul>
+        </ul>
+    </div>
+</div>
+<hr />
+</ui:composition>

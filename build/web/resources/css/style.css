@@ -1,14 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
 
-::selection {
-	color: #fff;
-	background: #616161; /* Safari */
-}
-::-moz-selection {
-	color: #fff;
-	background: #616161; /* Firefox */
-}
-
 * {
 	margin: 0;
 	padding: 0;
@@ -50,6 +41,11 @@ footer {
 	color: #fff;
 	text-shadow: 1px 1px 0 rgba(0,0,0,1.0);
 }
+
+footer a:visited { text-decoration : underline; color: #fff}
+footer a:link { text-decoration : underline; color: #fff}
+footer a:hover { text-decoration : underline; color: #fff}
+footer a:active { text-decoration : underline; color: #fff}
 
 .login-form {
 	width: 300px;

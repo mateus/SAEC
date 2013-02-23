@@ -43,7 +43,7 @@
                 </div>
                 <div class="content">
                     <h:inputText type="text" class="input username" value="#{Usuario.usuario.usuario}" onfocus="this.value=''" />
-                    <h:inputText type="password" class="input password" value="#{Usuario.usuario.senha}" onfocus="this.value=''" />
+                    <h:inputSecret type="password" class="input password" value="#{Usuario.usuario.senha}" onfocus="this.value=''" required="true" />
                 </div>
                 <div class="footer">
                     <h:commandButton action="#{Usuario.verificaLogin()}" value="Entrar" class="button" />
@@ -51,9 +51,6 @@
                 </div>
             </h:form>
         </div>
-        <footer>
-            <p>Desenvolvido por Mateus Ferreira Silva para a disciplina de Desenvolvimento de Aplicações Web</p>
-            <p>Instituto Federal de Educação, Ciência e Tecnologia do Sudeste de Minas - Câmpus Barbacena - TSI Turma 2011</p>
-        </footer>
+        <ui:include src="footer.xhtml" />
     </h:body>
 </html>
