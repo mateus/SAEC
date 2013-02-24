@@ -61,17 +61,4 @@ public class PacienteDAO {
             return null;
         }
     }
-    
-    public Paciente getPaciente(Paciente paciente){
-        try{
-            EntityManager em = Conexao.getEntityManager();
-            Query q = em.createQuery("SELECT p FROM Paciente p WHERE p.id=:id");
-            q.setParameter("id", paciente.getId());
-            paciente = (Paciente) q.getResultList();
-  
-            return paciente;
-        }catch(Exception e){
-            return null;
-        }
-    }
 }

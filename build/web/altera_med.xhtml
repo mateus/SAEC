@@ -20,10 +20,10 @@
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="hero-unit">
-                    <h2>Cadastrar Médico</h2>  
+                    <h2>Editar Médico</h2>  
                 </div>
                 <div class="span6 offset3">
-                    <h:form name="cad-med-form">            
+                    <h:form name="Alterar-med-form">            
                         <fieldset>
                         <legend>Médico</legend>
                         <label><span style="color: red;">*</span> Nome</label>
@@ -33,8 +33,8 @@
                         </fieldset>
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
-                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Medico.cadastrar()}" value="Cadastrar"/>
-                            <h:message for="cad-med-form" errorClass="error" />
+                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Medico.cadastrar()}" value="Alterar"/>
+                            <h:message for="alterar-med-form" errorClass="error" />
                         </center>
                     </h:form>
                 </div>

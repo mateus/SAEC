@@ -5,8 +5,13 @@
         <Node id="navbar.xhtml" x="236" y="25" zoom="true"/>
         <Node id="cad_pac.xhtml" x="25" y="181" zoom="true"/>
         <Node id="footer.xhtml" x="29" y="24" zoom="true"/>
+        <Node id="lista_pac.xhtml" x="402" y="191" zoom="true"/>
         <Node id="login.xhtml" x="37" y="539" zoom="true"/>
         <Node id="index.xhtml" x="82" y="397" zoom="true"/>
+        <Node id="lista_med.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="head.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="cad_med.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="altera_pac.xhtml" x="394" y="67" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

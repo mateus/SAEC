@@ -54,7 +54,7 @@ public class PacienteBean implements Serializable{
             if(pacienteDAO.cadastrar(paciente)){
                 paciente = new Paciente();
                 FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Cadastro realizado com sucesso.");
+                FacesMessage msg = new FacesMessage("Operação realizada com sucesso.");
                 contexto.addMessage("pac-cad-form", msg);
             }else{
                 FacesContext contexto = FacesContext.getCurrentInstance();
@@ -88,9 +88,8 @@ public class PacienteBean implements Serializable{
         pacienteDAO.deletar(paciente);
     }
     
-    public String alterar(){
-        PacienteDAO pacienteDAO = new PacienteDAO();
-        paciente = pacienteDAO.getPaciente(paciente);
+    public String alterar(Paciente paciente){
+        this.paciente = paciente;
         return "alterar";
     }
 }

@@ -3,9 +3,17 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
-  <head>
-        <ui:include src="head.xhtml" /> 
-  </head>
+  <h:head>
+    <meta charset="utf-8" />
+    <title>SAEC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Mateus Ferreira Silva" />
+
+    <h:outputStylesheet name="bootstrap.css" library="css" />
+    <h:outputStylesheet name="bootstrap-responsive.css" library="css" />
+    <h:outputStylesheet name="my-style.css" library="css" />
+    <link href="resources/img/favicon.gif" type="image/png" rel="icon" /> 
+  </h:head>
   <body> 
     <ui:include src="navbar.xhtml" />  
     
@@ -13,7 +21,7 @@
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="hero-unit">
-                    <h2>Alterar Paciente</h2>  
+                    <h2>Editar Paciente</h2>  
                 </div>
                 <div class="span6 offset3">
                     <h:form name="altera-pac-form">
@@ -66,7 +74,7 @@
                         </fieldset>
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
-                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Paciente.cadastrar()}" value="Cadastrar"/>
+                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Paciente.cadastrar()}" value="Alterar"/>
                             <h:message for="altera-pac-form" errorClass="error" />
                         </center>
                     </h:form>

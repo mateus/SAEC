@@ -83,4 +83,9 @@ public class MedicoBean {
         MedicoDAO medicoDAO = new MedicoDAO();
         medicoDAO.deletar(medico);
     }
+     
+    public String alterar(Medico medico){
+        this.medico = medico;
+        return "alterar";
+    }
 }
