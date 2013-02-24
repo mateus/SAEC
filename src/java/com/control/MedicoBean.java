@@ -79,6 +79,20 @@ public class MedicoBean {
         }
     }
     
+    public List<MedicoBean> listarNomeId(){
+        MedicoDAO medicoDAO = new MedicoDAO();
+        medicosBean = new ArrayList();
+        
+        if (medicoDAO.getMedicos() != null){
+            for (Medico medico : medicoDAO.getMedicos()){
+                medicosBean.add(new MedicoBean(medico));
+            }
+            return medicosBean;
+        }else{
+            return null;
+        }
+    }
+    
      public void remover(){
         MedicoDAO medicoDAO = new MedicoDAO();
         medicoDAO.deletar(medico);

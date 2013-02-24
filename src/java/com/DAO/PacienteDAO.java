@@ -4,7 +4,6 @@
  */
 package com.DAO;
 
-import com.model.Medico;
 import com.model.Paciente;
 import com.util.Conexao;
 import java.util.List;

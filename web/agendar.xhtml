@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+  <h:head>
+    <meta charset="utf-8" />
+    <title>SAEC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Mateus Ferreira Silva" />
+
+    <h:outputStylesheet name="bootstrap.css" library="css" />
+    <h:outputStylesheet name="bootstrap-responsive.css" library="css" />
+    <h:outputStylesheet name="my-style.css" library="css" />
+    <link href="resources/img/favicon.gif" type="image/png" rel="icon" /> 
+  </h:head>
+  <body> 
+    <ui:include src="navbar.xhtml" />  
+    
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span8 offset2">
+                <div class="hero-unit">
+                    <h2>Agendar Consulta</h2>  
+                </div>
+                <div class="span6 offset3">
+                    <h:form name="agendar-form">
+                        <fieldset>
+                        <legend>Consulta</legend>
+                        <label><span style="color: red;">*</span> Hora</label>
+                        <h:inputText value="" maxlength="5" style="width:100px" />
+                        
+                        <label><span style="color: red;">*</span> Data</label>
+                        <h:inputText value="" style="width:100px" maxlength="10" >
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:inputText>
+                        
+                        <label><span style="color: red;">*</span> Médico</label>
+                        <h:selectOneMenu value="" >  
+                            <f:selectItems value="#{Medico.listarNomeId()}" var="med" itemLabel="#{med.medico.nome}" itemValue="#{med.medico.idMedico}"/>      
+                        </h:selectOneMenu>
+                        
+                        <label><span style="color: red;">*</span> Paciente</label>
+                        <h:selectOneMenu value="" >  
+                            <f:selectItems value="#{Paciente.listarNomeId()}" var="pac" itemLabel="#{pac.paciente.nome}" itemValue="#{pac.paciente.idPaciente}"/>      
+                        </h:selectOneMenu>
+                        
+                        <label><span style="color: red;">*</span> Exame</label>
+                        <h:selectOneMenu value="" >  
+                            <f:selectItems value="#{Exame.listarNomeId()}" var="exa" itemLabel="#{exa.exame.nome}" itemValue="#{exa.exame.idExame}"/>      
+                        </h:selectOneMenu>
+                        
+                        <label>Obs</label>
+                        <h:inputTextarea value="" rows="3" maxlength="200" style="width:400px" />
+                        
+                        <label>Resultado</label>
+                        <h:inputTextarea value="" rows="3" maxlength="200" style="width:400px" />
+                        </fieldset>
+                        
+                        <label><span style="color: red;">*</span> Campos obrigatórios</label>
+                        <center>
+                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" value="Agendar"/>
+                            <h:message for="agendar-form" errorClass="error" />
+                        </center>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <ui:include src="footer.xhtml" />
+    
+    <script src="resources/js/jquery.js"></script>
+    <script src="resources/js/bootstrap-transition.js"></script>
+    <script src="resources/js/bootstrap-alert.js"></script>
+    <script src="resources/js/bootstrap-modal.js"></script>
+    <script src="resources/js/bootstrap-dropdown.js"></script>
+    <script src="resources/js/bootstrap-scrollspy.js"></script>
+    <script src="resources/js/bootstrap-tab.js"></script>
+    <script src="resources/js/bootstrap-tooltip.js"></script>
+    <script src="resources/js/bootstrap-popover.js"></script>
+    <script src="resources/js/bootstrap-button.js"></script>
+    <script src="resources/js/bootstrap-collapse.js"></script>
+    <script src="resources/js/bootstrap-carousel.js"></script>
+    <script src="resources/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>

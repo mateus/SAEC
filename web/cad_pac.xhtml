@@ -28,19 +28,19 @@
                         <fieldset>
                         <legend>Paciente</legend>
                         <label><span style="color: red;">*</span> Nome</label>
-                        <h:inputText value="#{Paciente.paciente.nome}" maxlength="100" style="width:400px" />
+                        <h:inputText value="#{Paciente.paciente.nome}" maxlength="60" style="width:400px" />
                         <label><span style="color: red;">*</span> Data de Nascimento</label>
                         <h:inputText value="#{Paciente.paciente.dataNasc}" style="width:100px" maxlength="10" >
                             <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:inputText>
                         <label>Logradouro</label>
-                        <h:inputTextarea value="#{Paciente.paciente.logradouro}" rows="3" maxlength="200" style="width:400px" />
+                        <h:inputTextarea value="#{Paciente.paciente.logradouro}" rows="3" maxlength="60" style="width:400px" />
                         <label>Número</label>
                         <h:inputText value="#{Paciente.paciente.numero}" maxlength="5" style="width:50px" />
                         <label>Bairro</label>
-                        <h:inputText value="#{Paciente.paciente.bairro}" maxlength="100" style="width:250px" />
+                        <h:inputText value="#{Paciente.paciente.bairro}" maxlength="60" style="width:250px" />
                         <label>Cidade</label>
-                        <h:inputText value="#{Paciente.paciente.cidade}" maxlength="100" style="width:250px" />
+                        <h:inputText value="#{Paciente.paciente.cidade}" maxlength="60" style="width:250px" />
                         <label>UF</label>
                         <h:selectOneMenu value="#{Paciente.paciente.uf}" >  
                             <f:selectItem itemValue="AC" itemLabel="Acre"/> 

@@ -83,6 +83,20 @@ public class PacienteBean implements Serializable{
         }
     }
     
+    public List<PacienteBean> listarNomeId(){
+        PacienteDAO pacienteDAO = new PacienteDAO();
+        pacientesBean = new ArrayList();
+        
+        if (pacienteDAO.getPacientes() != null){
+            for (Paciente paciente : pacienteDAO.getPacientes()){
+                pacientesBean.add(new PacienteBean(paciente));
+            }
+            return pacientesBean;
+        }else{
+            return null;
+        }
+    }
+    
     public void remover(){
         PacienteDAO pacienteDAO = new PacienteDAO();
         pacienteDAO.deletar(paciente);

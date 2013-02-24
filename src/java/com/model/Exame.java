@@ -5,7 +5,9 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,10 +15,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -27,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Exame.findAll", query = "SELECT e FROM Exame e"),
-    @NamedQuery(name = "Exame.findById", query = "SELECT e FROM Exame e WHERE e.id = :id"),
+    @NamedQuery(name = "Exame.findByIdExame", query = "SELECT e FROM Exame e WHERE e.idExame = :idExame"),
     @NamedQuery(name = "Exame.findByNome", query = "SELECT e FROM Exame e WHERE e.nome = :nome"),
     @NamedQuery(name = "Exame.findByValor", query = "SELECT e FROM Exame e WHERE e.valor = :valor")})
 public class Exame implements Serializable {
@@ -35,37 +39,39 @@ public class Exame implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "idExame")
+    private Integer idExame;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 200)
+    @Size(min = 1, max = 40)
     @Column(name = "nome")
     private String nome;
     @Basic(optional = false)
     @NotNull
     @Column(name = "valor")
     private float valor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "exame")
+    private Collection<Agenda> agendaCollection;
 
     public Exame() {
     }
 
-    public Exame(Integer id) {
-        this.id = id;
+    public Exame(Integer idExame) {
+        this.idExame = idExame;
     }
 
-    public Exame(Integer id, String nome, float valor) {
-        this.id = id;
+    public Exame(Integer idExame, String nome, float valor) {
+        this.idExame = idExame;
         this.nome = nome;
         this.valor = valor;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdExame() {
+        return idExame;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdExame(Integer idExame) {
+        this.idExame = idExame;
     }
 
     public String getNome() {
@@ -84,10 +90,19 @@ public class Exame implements Serializable {
         this.valor = valor;
     }
 
+    @XmlTransient
+    public Collection<Agenda> getAgendaCollection() {
+        return agendaCollection;
+    }
+
+    public void setAgendaCollection(Collection<Agenda> agendaCollection) {
+        this.agendaCollection = agendaCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idExame != null ? idExame.hashCode() : 0);
         return hash;
     }
 
@@ -98,7 +113,7 @@ public class Exame implements Serializable {
             return false;
         }
         Exame other = (Exame) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idExame == null && other.idExame != null) || (this.idExame != null && !this.idExame.equals(other.idExame))) {
             return false;
         }
         return true;
@@ -106,7 +121,7 @@ public class Exame implements Serializable {
 
     @Override
     public String toString() {
-        return "com.model.Exame[ id=" + id + " ]";
+        return "com.model.Exame[ idExame=" + idExame + " ]";
     }
     
 }

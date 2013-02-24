@@ -71,6 +71,20 @@ public class ExameBean {
         }
     }
     
+    public List<ExameBean> listarNomeId(){
+        ExameDAO exameDAO = new ExameDAO();
+        examesBean = new ArrayList();
+        
+        if (exameDAO.getExames() != null){
+            for (Exame exame : exameDAO.getExames()){
+                examesBean.add(new ExameBean(exame));
+            }
+            return examesBean;
+        }else{
+            return null;
+        }
+    }
+    
      public void remover(){
         ExameDAO exameDAO = new ExameDAO();
         exameDAO.deletar(exame);

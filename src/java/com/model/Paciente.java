@@ -5,8 +5,10 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,12 +16,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Paciente.findAll", query = "SELECT p FROM Paciente p"),
-    @NamedQuery(name = "Paciente.findById", query = "SELECT p FROM Paciente p WHERE p.id = :id"),
+    @NamedQuery(name = "Paciente.findByIdPaciente", query = "SELECT p FROM Paciente p WHERE p.idPaciente = :idPaciente"),
     @NamedQuery(name = "Paciente.findByNome", query = "SELECT p FROM Paciente p WHERE p.nome = :nome"),
     @NamedQuery(name = "Paciente.findByDataNasc", query = "SELECT p FROM Paciente p WHERE p.dataNasc = :dataNasc"),
     @NamedQuery(name = "Paciente.findByLogradouro", query = "SELECT p FROM Paciente p WHERE p.logradouro = :logradouro"),
@@ -43,53 +47,55 @@ public class Paciente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "idPaciente")
+    private Integer idPaciente;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
+    @Size(min = 1, max = 60)
     @Column(name = "nome")
     private String nome;
     @Basic(optional = false)
     @NotNull
     @Column(name = "dataNasc")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dataNasc;
-    @Size(max = 200)
+    @Size(max = 60)
     @Column(name = "logradouro")
     private String logradouro;
     @Size(max = 10)
     @Column(name = "numero")
     private String numero;
-    @Size(max = 100)
+    @Size(max = 60)
     @Column(name = "bairro")
     private String bairro;
-    @Size(max = 100)
+    @Size(max = 60)
     @Column(name = "cidade")
     private String cidade;
     @Size(max = 2)
     @Column(name = "uf")
     private String uf;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
+    private Collection<Agenda> agendaCollection;
 
     public Paciente() {
     }
 
-    public Paciente(Integer id) {
-        this.id = id;
+    public Paciente(Integer idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
-    public Paciente(Integer id, String nome, Date dataNasc) {
-        this.id = id;
+    public Paciente(Integer idPaciente, String nome, Date dataNasc) {
+        this.idPaciente = idPaciente;
         this.nome = nome;
         this.dataNasc = dataNasc;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdPaciente() {
+        return idPaciente;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdPaciente(Integer idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     public String getNome() {
@@ -148,10 +154,19 @@ public class Paciente implements Serializable {
         this.uf = uf;
     }
 
+    @XmlTransient
+    public Collection<Agenda> getAgendaCollection() {
+        return agendaCollection;
+    }
+
+    public void setAgendaCollection(Collection<Agenda> agendaCollection) {
+        this.agendaCollection = agendaCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idPaciente != null ? idPaciente.hashCode() : 0);
         return hash;
     }
 
@@ -162,7 +177,7 @@ public class Paciente implements Serializable {
             return false;
         }
         Paciente other = (Paciente) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idPaciente == null && other.idPaciente != null) || (this.idPaciente != null && !this.idPaciente.equals(other.idPaciente))) {
             return false;
         }
         return true;
@@ -170,7 +185,7 @@ public class Paciente implements Serializable {
 
     @Override
     public String toString() {
-        return "com.model.Paciente[ id=" + id + " ]";
+        return "com.model.Paciente[ idPaciente=" + idPaciente + " ]";
     }
     
 }
