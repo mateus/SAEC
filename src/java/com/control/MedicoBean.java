@@ -78,4 +78,9 @@ public class MedicoBean {
             return null;
         }
     }
+    
+     public void remover(){
+        MedicoDAO medicoDAO = new MedicoDAO();
+        medicoDAO.deletar(medico);
+    }
 }

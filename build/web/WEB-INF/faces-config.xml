@@ -45,4 +45,11 @@
             <to-view-id>/cad_pac.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/lista_pac.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>alterar</from-outcome>
+            <to-view-id>/altera_pac.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

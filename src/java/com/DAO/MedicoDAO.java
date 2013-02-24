@@ -34,10 +34,25 @@ public class MedicoDAO {
         }        
     }
     
+    public boolean deletar(Medico medico){
+        EntityManager em = Conexao.getEntityManager();
+        EntityTransaction et = em.getTransaction();
+        try {
+            et.begin();
+            em.remove(medico);
+            et.commit();
+            return true;
+        } catch (Exception e) {
+            if (et.isActive()) {
+                et.rollback(); 
+            }
+            return false;
+        }        
+    }
+    
     public List<Medico> getMedicos(){
         try{
             EntityManager em = Conexao.getEntityManager();
-            EntityTransaction et = em.getTransaction();
             Query q = em.createQuery("SELECT m FROM Medico m");
 
             List<Medico> medicos = q.getResultList();

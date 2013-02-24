@@ -83,4 +83,14 @@ public class PacienteBean implements Serializable{
         }
     }
     
+    public void remover(){
+        PacienteDAO pacienteDAO = new PacienteDAO();
+        pacienteDAO.deletar(paciente);
+    }
+    
+    public String alterar(){
+        PacienteDAO pacienteDAO = new PacienteDAO();
+        paciente = pacienteDAO.getPaciente(paciente);
+        return "alterar";
+    }
 }

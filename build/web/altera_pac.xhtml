@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+  <head>
+        <ui:include src="head.xhtml" /> 
+  </head>
+  <body> 
+    <ui:include src="navbar.xhtml" />  
+    
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span8 offset2">
+                <div class="hero-unit">
+                    <h2>Alterar Paciente</h2>  
+                </div>
+                <div class="span6 offset3">
+                    <h:form name="altera-pac-form">
+                        <fieldset>
+                        <legend>Paciente</legend>
+                        <label><span style="color: red;">*</span> Nome</label>
+                        <h:inputText value="#{Paciente.paciente.nome}" maxlength="100" style="width:400px" />
+                        <label><span style="color: red;">*</span> Data de Nascimento</label>
+                        <h:inputText value="#{Paciente.paciente.dataNasc}" style="width:100px" maxlength="10" >
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:inputText>
+                        <label>Logradouro</label>
+                        <h:inputTextarea value="#{Paciente.paciente.logradouro}" rows="3" maxlength="200" style="width:400px" />
+                        <label>Número</label>
+                        <h:inputText value="#{Paciente.paciente.numero}" maxlength="5" style="width:50px" />
+                        <label>Bairro</label>
+                        <h:inputText value="#{Paciente.paciente.bairro}" maxlength="100" style="width:250px" />
+                        <label>Cidade</label>
+                        <h:inputText value="#{Paciente.paciente.cidade}" maxlength="100" style="width:250px" />
+                        <label>UF</label>
+                        <h:selectOneMenu value="#{Paciente.paciente.uf}" >  
+                            <f:selectItem itemValue="AC" itemLabel="Acre"/> 
+                            <f:selectItem itemValue="AL" itemLabel="Alagoas"/>  
+                            <f:selectItem itemValue="AP" itemLabel="Amapá"/>  
+                            <f:selectItem itemValue="AM" itemLabel="Amazonas"/>  
+                            <f:selectItem itemValue="BA" itemLabel="Bahia"/>  
+                            <f:selectItem itemValue="CE" itemLabel="Ceará"/>  
+                            <f:selectItem itemValue="DF" itemLabel="Distrito Federal"/>  
+                            <f:selectItem itemValue="ES" itemLabel="Espírito Santo"/>
+                            <f:selectItem itemValue="GO" itemLabel="Goiais"/>
+                            <f:selectItem itemValue="MA" itemLabel="Maranhão"/>  
+                            <f:selectItem itemValue="MT" itemLabel="Mato Grosso"/> 
+                            <f:selectItem itemValue="MS" itemLabel="Mato Grosso do Sul"/> 
+                            <f:selectItem itemValue="MG" itemLabel="Minas Gerais"/>
+                            <f:selectItem itemValue="PR" itemLabel="Paraná"/>
+                            <f:selectItem itemValue="PB" itemLabel="Paraíba"/>  
+                            <f:selectItem itemValue="PA" itemLabel="Pará"/>  
+                            <f:selectItem itemValue="PE" itemLabel="Pernambuco"/>  
+                            <f:selectItem itemValue="PI" itemLabel="Piauí"/> 
+                            <f:selectItem itemValue="RJ" itemLabel="Rio de Janeiro"/>  
+                            <f:selectItem itemValue="RN" itemLabel="Rio Grande do Norte"/>  
+                            <f:selectItem itemValue="RS" itemLabel="Rio Grande do Sul"/>  
+                            <f:selectItem itemValue="RO" itemLabel="Rondonia"/>  
+                            <f:selectItem itemValue="RR" itemLabel="Roraima"/>  
+                            <f:selectItem itemValue="SC" itemLabel="Santa Catarina"/>
+                            <f:selectItem itemValue="SE" itemLabel="Sergipe"/>                            
+                            <f:selectItem itemValue="SP" itemLabel="São Paulo"/>
+                            <f:selectItem itemValue="TO" itemLabel="Tocantis"/>      
+                        </h:selectOneMenu>  
+                        </fieldset>
+                        <label><span style="color: red;">*</span> Campos obrigatórios</label>
+                        <center>
+                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Paciente.cadastrar()}" value="Cadastrar"/>
+                            <h:message for="altera-pac-form" errorClass="error" />
+                        </center>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <ui:include src="footer.xhtml" />
+    
+    <script src="resources/js/jquery.js"></script>
+    <script src="resources/js/bootstrap-transition.js"></script>
+    <script src="resources/js/bootstrap-alert.js"></script>
+    <script src="resources/js/bootstrap-modal.js"></script>
+    <script src="resources/js/bootstrap-dropdown.js"></script>
+    <script src="resources/js/bootstrap-scrollspy.js"></script>
+    <script src="resources/js/bootstrap-tab.js"></script>
+    <script src="resources/js/bootstrap-tooltip.js"></script>
+    <script src="resources/js/bootstrap-popover.js"></script>
+    <script src="resources/js/bootstrap-button.js"></script>
+    <script src="resources/js/bootstrap-collapse.js"></script>
+    <script src="resources/js/bootstrap-carousel.js"></script>
+    <script src="resources/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>
