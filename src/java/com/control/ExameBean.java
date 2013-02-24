@@ -17,6 +17,7 @@ public class ExameBean {
     Exame exame;
 
     public ExameBean() {
+        exame = new Exame();
     }
 
     public ExameBean(Exame exame) {
