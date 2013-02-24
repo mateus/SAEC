@@ -13,31 +13,33 @@
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="hero-unit">
-                    <h2>Médicos Cadastrados</h2>  
+                    <h2>Pacientes Cadastrados</h2>  
                 </div>
                 <div class="span8 offset2">
                     <h:form name="atualiza-lista-medicos">
-                        <h:dataTable  class="table table-condensed table-hover" value="#{Medico.listar()}" var="med" columnClasses="coluna1,coluna2,coluna3,coluna4,coluna5">
+                        <h:dataTable class="table table-condensed table-hover" value="#{Paciente.listar()}" var="pac" columnClasses="coluna1,coluna2,coluna3,coluna4,coluna5">
 
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="ID"/>
                                 </f:facet>
-                                <h:outputText value="#{med.medico.id}"/>
+                                <h:outputText value="#{pac.paciente.id}"/>
                             </h:column>
 
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Nome"/>
                                 </f:facet>
-                                <h:outputText value="#{med.medico.nome}" />
+                                <h:outputText value="#{pac.paciente.nome}" />
                             </h:column>
 
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="CRM"/>
+                                    <h:outputText value="Data de Nascimento"/>
                                 </f:facet>
-                                <h:outputText value="#{med.medico.crm}" />
+                                <h:outputText value="#{pac.paciente.dataNasc}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
                             </h:column>
 
                             <h:column style="margin: 0px;">

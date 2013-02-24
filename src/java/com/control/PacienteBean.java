@@ -4,11 +4,16 @@
  */
 package com.control;
 
+import com.DAO.MedicoDAO;
 import com.DAO.PacienteDAO;
+import com.model.Medico;
 import com.model.Paciente;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.model.ListDataModel;
 
 /**
  *
@@ -16,7 +21,21 @@ import javax.faces.context.FacesContext;
  */
 public class PacienteBean implements Serializable{
     Paciente paciente;
-  
+    
+    private List<PacienteBean> pacientesBean = new ArrayList();
+
+    private PacienteBean(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public List<PacienteBean> getPacientesBean() {
+        return pacientesBean;
+    }
+
+    public void setPacientesBean(List<PacienteBean> pacientesBean) {
+        this.pacientesBean = pacientesBean;
+    }
+      
     public PacienteBean() {
         paciente = new Paciente();
     }
@@ -47,6 +66,20 @@ public class PacienteBean implements Serializable{
             FacesContext contexto = FacesContext.getCurrentInstance();
             FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios.");
             contexto.addMessage("pac-cad-form", msg);
+        }
+    }
+    
+    public ListDataModel listar(){
+        PacienteDAO pacienteDAO = new PacienteDAO();
+        pacientesBean = new ArrayList();
+        
+        if (pacienteDAO.getPacientes() != null){
+            for (Paciente paciente : pacienteDAO.getPacientes()){
+                pacientesBean.add(new PacienteBean(paciente));
+            }
+            return new ListDataModel(pacientesBean);
+        }else{
+            return null;
         }
     }
     

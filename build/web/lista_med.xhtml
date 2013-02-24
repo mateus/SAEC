@@ -3,15 +3,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
-    <head>
-        <meta charset="utf-8" />
-        <title>SAEC</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Mateus Ferreira Silva" />
-
-        <link href="resources/css/bootstrap.css" rel="stylesheet" />
-        <link href="resources/css/bootstrap-responsive.css" rel="stylesheet" />
-        <link href="resources/css/my-style.css" rel="stylesheet" />
+  <head>
+        <ui:include src="head.xhtml" /> 
   </head>
   <body> 
     <ui:include src="navbar.xhtml" />  
@@ -20,33 +13,47 @@
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="hero-unit">
-                    <h2>Listar Médicos</h2>  
+                    <h2>Médicos Cadastrados</h2>  
                 </div>
-                <div class="span6 offset3">
-                    <h:dataTable value="#{Medico.listar()}" var="med" width="500" border="1" cellpadding="1" cellspacing="0">
+                <div class="span8 offset2">
+                    <h:form name="atualiza-lista-medicos">
+                        <h:dataTable  class="table table-condensed table-hover" value="#{Medico.listar()}" var="med" columnClasses="coluna1,coluna2,coluna3,coluna4,coluna5">
 
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="ID"/>
-                            </f:facet>
-                            <h:outputText value="#{med.medico.id}"/>
-                        </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ID"/>
+                                </f:facet>
+                                <h:outputText value="#{med.medico.id}"/>
+                            </h:column>
 
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Nome"/>
-                            </f:facet>
-                            <h:outputText value="#{med.medico.nome}" />
-                        </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nome"/>
+                                </f:facet>
+                                <h:outputText value="#{med.medico.nome}" />
+                            </h:column>
 
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="CRM"/>
-                            </f:facet>
-                            <h:outputText value="#{med.medico.crm}" />
-                        </h:column>
-                        
-                    </h:dataTable>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="CRM"/>
+                                </f:facet>
+                                <h:outputText value="#{med.medico.crm}" />
+                            </h:column>
+
+                            <h:column style="margin: 0px;">
+                                <f:facet name="header">
+                                </f:facet>
+                                <h:commandLink class="btn btn-primary btn-small" value="Atualizar"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                </f:facet>
+                                <h:commandLink class="btn btn-danger btn-small" value="Apagar"/>
+                            </h:column>
+
+                        </h:dataTable>
+                    </h:form>
                 </div>
             </div>
         </div>
