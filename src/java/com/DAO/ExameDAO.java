@@ -6,8 +6,10 @@ package com.DAO;
 
 import com.model.Exame;
 import com.util.Conexao;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,34 @@ public class ExameDAO {
             }
             return false;
         }        
+    }
+    
+    public boolean deletar(Exame exame){
+        EntityManager em = Conexao.getEntityManager();
+        EntityTransaction et = em.getTransaction();
+        try {
+            et.begin();
+            em.remove(exame);
+            et.commit();
+            return true;
+        } catch (Exception e) {
+            if (et.isActive()) {
+                et.rollback(); 
+            }
+            return false;
+        }        
+    }
+    
+    public List<Exame> getExames(){
+        try{
+            EntityManager em = Conexao.getEntityManager();
+            Query q = em.createQuery("SELECT e FROM Exame e");
+
+            List<Exame> exames = q.getResultList();
+  
+            return exames;
+        }catch(Exception e){
+            return null;
+        }
     }
 }

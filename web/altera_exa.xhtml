@@ -20,10 +20,10 @@
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="hero-unit">
-                    <h2>Cadastrar Exame</h2>  
+                    <h2>Editar Exame</h2>  
                 </div>
                 <div class="span6 offset3">
-                    <h:form name="cad-exa-form">            
+                    <h:form name="alt-exa-form">            
                         <fieldset>
                         <legend>Exame</legend>
                         <label><span style="color: red;">*</span> Nome</label>
@@ -37,7 +37,7 @@
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
                             <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Exame.cadastrar()}" value="Cadastrar"/>
-                            <h:message for="cad-exa-form" errorClass="error" />
+                            <h:message for="alt-exa-form" errorClass="error" />
                         </center>
                     </h:form>
                 </div>
