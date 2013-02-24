@@ -50,7 +50,7 @@ public class MedicoBean {
             if(medicoDAO.cadastrar(medico)){
                 medico = new Medico();
                 FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Cadastro realizado com sucesso.");
+                FacesMessage msg = new FacesMessage("Operação realizada com sucesso.");
                 contexto.addMessage("med-cad-form", msg);
             }else{
                 FacesContext contexto = FacesContext.getCurrentInstance();
