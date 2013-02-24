@@ -27,6 +27,11 @@
         <managed-bean-class>com.control.ExameBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Agenda</managed-bean-name>
+        <managed-bean-class>com.control.AgendaBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
     
     <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>

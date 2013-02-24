@@ -74,6 +74,7 @@
                         </fieldset>
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
+                            <h:commandButton style="margin-top: 15px; margin-right: 10px;" class="btn btn-info" action="#{Paciente.limpar()}" value="Limpar"/>
                             <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Paciente.cadastrar()}" value="Alterar"/>
                             <h:message for="altera-pac-form" errorClass="error" />
                         </center>

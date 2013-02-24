@@ -27,39 +27,38 @@
                     <h:form name="agendar-form">
                         <fieldset>
                         <legend>Consulta</legend>
-                        <label><span style="color: red;">*</span> Hora</label>
-                        <h:inputText value="" maxlength="5" style="width:100px" />
-                        
-                        <label><span style="color: red;">*</span> Data</label>
-                        <h:inputText value="" style="width:100px" maxlength="10" >
-                            <f:convertDateTime pattern="dd/MM/yyyy" />
+   
+                        <label><span style="color: red;">*</span> Data e Hora</label>
+                        <h:inputText value="#{Agenda.agendaPK.dataHora}" style="width:150px" maxlength="16" >
+                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
                         </h:inputText>
                         
                         <label><span style="color: red;">*</span> Médico</label>
-                        <h:selectOneMenu value="" >  
+                        <h:selectOneMenu value="#{Agenda.agendaPK.idMedico}" >  
                             <f:selectItems value="#{Medico.listarNomeId()}" var="med" itemLabel="#{med.medico.nome}" itemValue="#{med.medico.idMedico}"/>      
                         </h:selectOneMenu>
                         
                         <label><span style="color: red;">*</span> Paciente</label>
-                        <h:selectOneMenu value="" >  
+                        <h:selectOneMenu value="#{Agenda.agendaPK.idPaciente}" >  
                             <f:selectItems value="#{Paciente.listarNomeId()}" var="pac" itemLabel="#{pac.paciente.nome}" itemValue="#{pac.paciente.idPaciente}"/>      
                         </h:selectOneMenu>
                         
                         <label><span style="color: red;">*</span> Exame</label>
-                        <h:selectOneMenu value="" >  
+                        <h:selectOneMenu value="#{Agenda.agendaPK.idExame}" >  
                             <f:selectItems value="#{Exame.listarNomeId()}" var="exa" itemLabel="#{exa.exame.nome}" itemValue="#{exa.exame.idExame}"/>      
                         </h:selectOneMenu>
                         
                         <label>Obs</label>
-                        <h:inputTextarea value="" rows="3" maxlength="200" style="width:400px" />
+                        <h:inputTextarea value="#{Agenda.agenda.obs}" rows="3" maxlength="200" style="width:400px" />
                         
                         <label>Resultado</label>
-                        <h:inputTextarea value="" rows="3" maxlength="200" style="width:400px" />
+                        <h:inputTextarea value="#{Agenda.agenda.resultado}" rows="3" maxlength="200" style="width:400px" />
                         </fieldset>
                         
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
-                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" value="Agendar"/>
+                            <h:commandButton style="margin-top: 15px; margin-right: 10px;" action="#{Agenda.limpar()}" class="btn btn-info" value="Limpar"/>
+                            <h:commandButton style="margin-top: 15px" action="#{Agenda.cadastrar()}" class="btn btn-primary" value="Agendar"/>
                             <h:message for="agendar-form" errorClass="error" />
                         </center>
                     </h:form>

@@ -106,4 +106,8 @@ public class PacienteBean implements Serializable{
         this.paciente = paciente;
         return "alterar";
     }
+    
+    public void limpar(){
+        paciente = new Paciente();
+    }
 }

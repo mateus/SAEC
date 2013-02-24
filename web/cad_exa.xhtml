@@ -36,7 +36,8 @@
                         </fieldset>
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
-                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Exame.cadastrar()}" value="Cadastrar"/>
+                            <h:commandButton style="margin-top: 15px; margin-right: 10px;" class="btn btn-info" action="#{Exame.limpar()}" value="Limpar"/>
+                            <h:commandButton style="margin-top: 15px;" class="btn btn-primary" action="#{Exame.cadastrar()}" value="Cadastrar"/>
                             <h:message for="cad-exa-form" errorClass="error" />
                         </center>
                     </h:form>

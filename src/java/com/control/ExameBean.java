@@ -85,7 +85,7 @@ public class ExameBean {
         }
     }
     
-     public void remover(){
+    public void remover(){
         ExameDAO exameDAO = new ExameDAO();
         exameDAO.deletar(exame);
     }
@@ -93,5 +93,9 @@ public class ExameBean {
     public String alterar(Exame exame){
         this.exame = exame;
         return "alterar";
+    }
+    
+    public void limpar(){
+        exame = new Exame();
     }
 }

@@ -33,6 +33,7 @@
                         </fieldset>
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
+                            <h:commandButton style="margin-top: 15px; margin-right: 10px;" class="btn btn-info" action="#{Medico.limpar()}" value="Limpar"/>
                             <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Medico.cadastrar()}" value="Alterar"/>
                             <h:message for="alterar-med-form" errorClass="error" />
                         </center>

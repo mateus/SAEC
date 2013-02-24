@@ -102,4 +102,8 @@ public class MedicoBean {
         this.medico = medico;
         return "alterar";
     }
+    
+    public void limpar(){
+        medico = new Medico();
+    }
 }
