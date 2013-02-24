@@ -55,29 +55,19 @@ public class Paciente implements Serializable {
     @Column(name = "dataNasc")
     @Temporal(TemporalType.DATE)
     private Date dataNasc;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
+    @Size(max = 200)
     @Column(name = "logradouro")
     private String logradouro;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
+    @Size(max = 10)
     @Column(name = "numero")
     private String numero;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max = 100)
     @Column(name = "bairro")
     private String bairro;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max = 100)
     @Column(name = "cidade")
     private String cidade;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 2)
+    @Size(max = 2)
     @Column(name = "uf")
     private String uf;
 
@@ -88,15 +78,10 @@ public class Paciente implements Serializable {
         this.id = id;
     }
 
-    public Paciente(Integer id, String nome, Date dataNasc, String logradouro, String numero, String bairro, String cidade, String uf) {
+    public Paciente(Integer id, String nome, Date dataNasc) {
         this.id = id;
         this.nome = nome;
         this.dataNasc = dataNasc;
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.uf = uf;
     }
 
     public Integer getId() {

@@ -14,17 +14,19 @@ import javax.persistence.EntityTransaction;
  * @author mateus
  */
 public class PacienteDAO {
-    public void cadastrar(Paciente paciente){
+    public boolean cadastrar(Paciente paciente){
         EntityManager em = Conexao.getEntityManager();
         EntityTransaction et = em.getTransaction();
         try {
             et.begin();
             em.persist(paciente);
             et.commit();
+            return true;
         } catch (Exception e) {
             if (et.isActive()) {
-                et.rollback();
+                et.rollback(); 
             }
+            return false;
         }        
     }
 }

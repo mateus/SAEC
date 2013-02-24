@@ -26,22 +26,22 @@
                     <h:form name="cad-pac-form">
                         <fieldset>
                         <legend>Paciente</legend>
-                        <label>Nome</label>
-                        <h:inputText type="text" value="#{Paciente.paciente.nome}" maxlength="100" style="width:400px" />
-                        <label>Data de Nascimento</label>
-                        <h:inputText value="#{Paciente.paciente.dataNasc}" style="width:100px" maxlength="10">
+                        <label><span style="color: red;">*</span> Nome</label>
+                        <h:inputText value="#{Paciente.paciente.nome}" maxlength="100" style="width:400px" />
+                        <label><span style="color: red;">*</span> Data de Nascimento</label>
+                        <h:inputText value="#{Paciente.paciente.dataNasc}" style="width:100px" maxlength="10" >
                             <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:inputText>
                         <label>Logradouro</label>
-                        <h:inputTextarea value="#{Paciente.paciente.logradouro}" rows="3" type="text" maxlength="200" style="width:400px"/>
+                        <h:inputTextarea value="#{Paciente.paciente.logradouro}" rows="3" maxlength="200" style="width:400px" />
                         <label>Número</label>
-                        <h:inputText value="#{Paciente.paciente.numero}" type="text" maxlength="5" style="width:50px"/>
+                        <h:inputText value="#{Paciente.paciente.numero}" maxlength="5" style="width:50px" />
                         <label>Bairro</label>
-                        <h:inputText value="#{Paciente.paciente.bairro}" type="text" maxlength="100" style="width:250px"/>
+                        <h:inputText value="#{Paciente.paciente.bairro}" maxlength="100" style="width:250px" />
                         <label>Cidade</label>
-                        <h:inputText value="#{Paciente.paciente.cidade}" type="text" maxlength="100" style="width:250px"/>
+                        <h:inputText value="#{Paciente.paciente.cidade}" maxlength="100" style="width:250px" />
                         <label>UF</label>
-                        <h:selectOneMenu value="#{Paciente.paciente.uf}">  
+                        <h:selectOneMenu value="#{Paciente.paciente.uf}" >  
                             <f:selectItem itemValue="AC" itemLabel="Acre"/> 
                             <f:selectItem itemValue="AL" itemLabel="Alagoas"/>  
                             <f:selectItem itemValue="AP" itemLabel="Amapá"/>  
@@ -71,8 +71,12 @@
                             <f:selectItem itemValue="TO" itemLabel="Tocantis"/>      
                         </h:selectOneMenu>  
                         </fieldset>
+                        <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
-                            <h:commandButton class="btn btn-primary" action="#{Paciente.cadastrar()}" value="Cadastrar"/>
+                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Paciente.cadastrar()}" value="Cadastrar"/>
+                            <div style="margin-top: 5px">
+                                <h:outputText value="#{Paciente.mensagem}" style="color:#111;" />
+                            </div>
                         </center>
                     </h:form>
                 </div>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head>
+        <meta charset="utf-8" />
+        <title>SAEC</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Mateus Ferreira Silva" />
+
+        <link href="resources/css/bootstrap.css" rel="stylesheet" />
+        <link href="resources/css/bootstrap-responsive.css" rel="stylesheet" />
+        <link href="resources/css/my-style.css" rel="stylesheet" />
+  </head>
+  <body> 
+    <ui:include src="navbar.xhtml" />  
+    
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span8 offset2">
+                <div class="hero-unit">
+                    <h2>Cadastrar Médico</h2>  
+                </div>
+                <div class="span6 offset3">
+                    <h:form name="cad-med-form">            
+                        <fieldset>
+                        <legend>Médico</legend>
+                        <label><span style="color: red;">*</span> Nome</label>
+                        <h:inputText value="#{Medico.medico.nome}" maxlength="100" name="nome" style="width:400px" rendered="true" requiredMessage="Campo obrigatório" />
+                        <label><span style="color: red;">*</span> CRM</label>
+                        <h:inputText value="#{Medico.medico.crm}" maxlength="30" name="crm" style="width:150px" rendered="true" requiredMessage="Campo obrigatório" />
+                        </fieldset>
+                        <label><span style="color: red;">*</span> Campos obrigatórios</label>
+                        <center>
+                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Medico.cadastrar()}" value="Cadastrar"/>
+                            <h:message for="cad-med-form" errorClass="error" />
+                        </center>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <ui:include src="footer.xhtml" />
+    
+    <script src="resources/js/jquery.js"></script>
+    <script src="resources/js/bootstrap-transition.js"></script>
+    <script src="resources/js/bootstrap-alert.js"></script>
+    <script src="resources/js/bootstrap-modal.js"></script>
+    <script src="resources/js/bootstrap-dropdown.js"></script>
+    <script src="resources/js/bootstrap-scrollspy.js"></script>
+    <script src="resources/js/bootstrap-tab.js"></script>
+    <script src="resources/js/bootstrap-tooltip.js"></script>
+    <script src="resources/js/bootstrap-popover.js"></script>
+    <script src="resources/js/bootstrap-button.js"></script>
+    <script src="resources/js/bootstrap-collapse.js"></script>
+    <script src="resources/js/bootstrap-carousel.js"></script>
+    <script src="resources/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>

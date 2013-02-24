@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <meta charset="utf-8" />
+        <title>SAEC</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Mateus Ferreira Silva" />
+
+        <link href="resources/css/bootstrap.css" rel="stylesheet" />
+        <link href="resources/css/bootstrap-responsive.css" rel="stylesheet" />
+        <link href="resources/css/my-style.css" rel="stylesheet" />
+  </head>
+  <body> 
+    <ui:include src="navbar.xhtml" />  
+    
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span8 offset2">
+                <div class="hero-unit">
+                    <h2>Listar Médicos</h2>  
+                </div>
+                <div class="span6 offset3">
+                    <h:dataTable value="#{Medico.listar()}" var="med" width="500" border="1" cellpadding="1" cellspacing="0">
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID"/>
+                            </f:facet>
+                            <h:outputText value="#{med.medico.id}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nome"/>
+                            </f:facet>
+                            <h:outputText value="#{med.medico.nome}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="CRM"/>
+                            </f:facet>
+                            <h:outputText value="#{med.medico.crm}" />
+                        </h:column>
+                        
+                    </h:dataTable>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <ui:include src="footer.xhtml" />
+    
+    <script src="resources/js/jquery.js"></script>
+    <script src="resources/js/bootstrap-transition.js"></script>
+    <script src="resources/js/bootstrap-alert.js"></script>
+    <script src="resources/js/bootstrap-modal.js"></script>
+    <script src="resources/js/bootstrap-dropdown.js"></script>
+    <script src="resources/js/bootstrap-scrollspy.js"></script>
+    <script src="resources/js/bootstrap-tab.js"></script>
+    <script src="resources/js/bootstrap-tooltip.js"></script>
+    <script src="resources/js/bootstrap-popover.js"></script>
+    <script src="resources/js/bootstrap-button.js"></script>
+    <script src="resources/js/bootstrap-collapse.js"></script>
+    <script src="resources/js/bootstrap-carousel.js"></script>
+    <script src="resources/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>
