@@ -17,49 +17,49 @@
   <body> 
     <ui:include src="navbar.xhtml" />  
     
-    <div class="container-fluid">
+    <div class="container">
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="hero-unit">
                     <h2>Agendar Consulta</h2>  
                 </div>
                 <div class="span6 offset3">
-                    <h:form name="agendar-form">
+                    <h:form id="agendar-form">
                         <fieldset>
                         <legend>Consulta</legend>
    
-                        <label><span style="color: red;">*</span> Data e Hora</label>
-                        <h:inputText value="#{Agenda.agendaPK.dataHora}" style="width:150px" maxlength="16" >
+                        <label for="agendar-form:dataHora"><span style="color: red;">*</span> Data e Hora</label>
+                        <h:inputText value="#{Agenda.agendaPK.dataHora}" id="dataHora" style="width:150px" >
                             <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
                         </h:inputText>
                         
-                        <label><span style="color: red;">*</span> Médico</label>
-                        <h:selectOneMenu value="#{Agenda.agendaPK.idMedico}" >  
+                        <label for="agendar-form:medico"><span style="color: red;">*</span> Médico</label>
+                        <h:selectOneMenu value="#{Agenda.agendaPK.idMedico}" id="medico">  
                             <f:selectItems value="#{Medico.listarNomeId()}" var="med" itemLabel="#{med.medico.nome}" itemValue="#{med.medico.idMedico}"/>      
                         </h:selectOneMenu>
                         
-                        <label><span style="color: red;">*</span> Paciente</label>
-                        <h:selectOneMenu value="#{Agenda.agendaPK.idPaciente}" >  
+                        <label for="agendar-form:paciente"><span style="color: red;">*</span> Paciente</label>
+                        <h:selectOneMenu value="#{Agenda.agendaPK.idPaciente}" id="paciente" >  
                             <f:selectItems value="#{Paciente.listarNomeId()}" var="pac" itemLabel="#{pac.paciente.nome}" itemValue="#{pac.paciente.idPaciente}"/>      
                         </h:selectOneMenu>
                         
-                        <label><span style="color: red;">*</span> Exame</label>
-                        <h:selectOneMenu value="#{Agenda.agendaPK.idExame}" >  
+                        <label for="agendar-form:exame"><span style="color: red;">*</span> Exame</label>
+                        <h:selectOneMenu value="#{Agenda.agendaPK.idExame}" id="exame" >  
                             <f:selectItems value="#{Exame.listarNomeId()}" var="exa" itemLabel="#{exa.exame.nome}" itemValue="#{exa.exame.idExame}"/>      
                         </h:selectOneMenu>
                         
-                        <label>Obs</label>
-                        <h:inputTextarea value="#{Agenda.agenda.obs}" rows="3" maxlength="200" style="width:400px" />
+                        <label for="agendar-form:obs">Obs</label>
+                        <h:inputTextarea value="#{Agenda.agenda.obs}" id="obs" rows="3" style="width:400px" />
                         
-                        <label>Resultado</label>
-                        <h:inputTextarea value="#{Agenda.agenda.resultado}" rows="3" maxlength="200" style="width:400px" />
+                        <label for="agendar-form:resultado">Resultado</label>
+                        <h:inputTextarea value="#{Agenda.agenda.resultado}" id="resultado" rows="3" style="width:400px" />
                         </fieldset>
                         
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
                             <h:commandButton style="margin-top: 15px; margin-right: 10px;" action="#{Agenda.limpar()}" class="btn btn-info" value="Limpar"/>
                             <h:commandButton style="margin-top: 15px" action="#{Agenda.cadastrar()}" class="btn btn-primary" value="Agendar"/>
-                            <h:message for="agendar-form" errorClass="error" />
+                            <h:messages for="agendar-form" styleClass="alert alert-info pull-right" style="margin-top: 15px; list-style: none; margin-right: 58px; padding-right: 15px;"/>
                         </center>
                     </h:form>
                 </div>

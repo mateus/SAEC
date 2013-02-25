@@ -20,6 +20,7 @@ import javax.faces.model.ListDataModel;
 public class AgendaBean {
     Agenda agenda;
     AgendaPK agendaPK;
+
     private List<AgendaBean> consultas = new ArrayList();
 
     public AgendaBean() {
@@ -77,17 +78,17 @@ public class AgendaBean {
                 agendaPK = new AgendaPK();
                 agenda = new Agenda(agendaPK);
                 FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Operação realizada com sucesso.");
+                FacesMessage msg = new FacesMessage("Operação realizada com sucesso");
                 contexto.addMessage("agendar-form", msg);
             }else{
                 FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Verifique se existe uma consulta nesta Data e Hora.");
+                FacesMessage msg = new FacesMessage("Verifique se existe uma consulta nesta Data e Hora");
                 contexto.addMessage("agendar-form", msg);
             }
         }
         else {
             FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios.");
+            FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios");
             contexto.addMessage("agendar-form", msg);
         }
     }
@@ -95,7 +96,6 @@ public class AgendaBean {
     public ListDataModel listar(){
         AgendaDAO agendaDAO = new AgendaDAO();
         consultas = new ArrayList();
-        limpar();
         
         if (agendaDAO.getConsultas() != null){
             for (Agenda a : agendaDAO.getConsultas()){

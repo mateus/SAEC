@@ -4,47 +4,54 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <h:outputStylesheet name="style.css" library="css" />
-        
+
         <meta charset="utf-8" />
         <meta http-equiv="refresh" content="15" /> 
         <title>SAEC - Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Sistema para Agendamento de Exames Clínicos" />
         <meta name="author" content="Mateus Ferreira Silva" />
-        
-<!--        <h:outputScript name="jquery.min.js" library="js" />
-        <h:outputScript name="login.js" library="js" />-->
-               
+
+        <!--        <h:outputScript name="jquery.min.js" library="js" />
+                <h:outputScript name="login.js" library="js" />-->
+
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
         <script type="text/javascript">
-              $(document).ready(function() {
-                 $(".username").focus(function() {
-                         $(".user-icon").css("left","-48px");
-                 });
-                 $(".username").blur(function() {
-                         $(".user-icon").css("left","0px");
-                 });
+            function add_atributo_form(formulario, elemento, atributo, valor){
+                var campo = $("#" + formulario + "\\:" + elemento);
+                campo.attr(atributo, valor);
+            }
+            $(document).ready(function() {
+                add_atributo_form("login-form", "usuario", "placeholder", "Usuário");
+                add_atributo_form("login-form", "senha", "placeholder", "Senha");
+                $(".username").focus(function() {
+                    $(".user-icon").css("left","-48px");
+                });
+                $(".username").blur(function() {
+                    $(".user-icon").css("left","0px");
+                });
 
-                 $(".password").focus(function() {
-                         $(".pass-icon").css("left","-48px");
-                 });
-                 $(".password").blur(function() {
-                         $(".pass-icon").css("left","0px");
-                 });
-             });
+                $(".password").focus(function() {
+                    $(".pass-icon").css("left","-48px");
+                });
+                $(".password").blur(function() {
+                    $(".pass-icon").css("left","0px");
+                });
+            });
         </script>
+        <!--<script type="text/javascript" src="resourses/js/placeholder.js"></script>-->
     </h:head>
     <h:body>
         <div id="wrapper">
             <div class="user-icon"></div>
             <div class="pass-icon"></div>
-            <h:form name="login-form" class="login-form" action="" method="post">
+            <h:form id="login-form" class="login-form" action="" method="post">
                 <div class="header">
                     <h2>SAEC - Login</h2>
                 </div>
                 <div class="content">
-                    <h:inputText type="text" class="input username" value="#{Usuario.usuario.usuario}" onfocus="this.value=''" />
-                    <h:inputSecret type="password" class="input password" value="#{Usuario.usuario.senha}" onfocus="this.value=''" required="true" />
+                    <h:inputText class="input username" value="#{Usuario.usuario.usuario}" id="usuario" />
+                    <h:inputSecret class="input password" value="#{Usuario.usuario.senha}" id="senha" />
                 </div>
                 <div class="footer">
                     <h:commandButton action="#{Usuario.verificaLogin()}" value="Entrar" class="button" />

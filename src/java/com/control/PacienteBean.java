@@ -22,20 +22,10 @@ import javax.faces.model.ListDataModel;
 public class PacienteBean implements Serializable{
     Paciente paciente;
     
-    private List<PacienteBean> pacientesBean = new ArrayList();
-
     private PacienteBean(Paciente paciente) {
         this.paciente = paciente;
     }
 
-    public List<PacienteBean> getPacientesBean() {
-        return pacientesBean;
-    }
-
-    public void setPacientesBean(List<PacienteBean> pacientesBean) {
-        this.pacientesBean = pacientesBean;
-    }
-      
     public PacienteBean() {
         paciente = new Paciente();
     }
@@ -55,27 +45,27 @@ public class PacienteBean implements Serializable{
                 paciente = new Paciente();
                 FacesContext contexto = FacesContext.getCurrentInstance();
                 FacesMessage msg = new FacesMessage("Operação realizada com sucesso.");
-                contexto.addMessage("pac-cad-form", msg);
+                contexto.addMessage("cad-pac-form", msg);
             }else{
                 FacesContext contexto = FacesContext.getCurrentInstance();
                 FacesMessage msg = new FacesMessage("Erro ao inserir no banco de dados.");
-                contexto.addMessage("pac-cad-form", msg);
+                contexto.addMessage("cad-pac-form", msg);
             }
         }
         else {
             FacesContext contexto = FacesContext.getCurrentInstance();
             FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios.");
-            contexto.addMessage("pac-cad-form", msg);
+            contexto.addMessage("cad-pac-form", msg);
         }
     }
     
     public ListDataModel listar(){
         PacienteDAO pacienteDAO = new PacienteDAO();
-        pacientesBean = new ArrayList();
+        List<PacienteBean> pacientesBean = new ArrayList();
         
         if (pacienteDAO.getPacientes() != null){
-            for (Paciente paciente : pacienteDAO.getPacientes()){
-                pacientesBean.add(new PacienteBean(paciente));
+            for (Paciente p : pacienteDAO.getPacientes()){
+                pacientesBean.add(new PacienteBean(p));
             }
             return new ListDataModel(pacientesBean);
         }else{
@@ -85,16 +75,22 @@ public class PacienteBean implements Serializable{
     
     public List<PacienteBean> listarNomeId(){
         PacienteDAO pacienteDAO = new PacienteDAO();
-        pacientesBean = new ArrayList();
+        List<PacienteBean> pacientesBean = new ArrayList();
         
         if (pacienteDAO.getPacientes() != null){
-            for (Paciente paciente : pacienteDAO.getPacientes()){
-                pacientesBean.add(new PacienteBean(paciente));
+            for (Paciente p : pacienteDAO.getPacientes()){
+                pacientesBean.add(new PacienteBean(p));
             }
             return pacientesBean;
         }else{
             return null;
         }
+    }
+    
+    public Paciente buscaPaciente(int id){
+        PacienteDAO pacienteDAO = new PacienteDAO();
+        paciente = pacienteDAO.getPaciente(id);
+        return paciente;  
     }
     
     public void remover(){
@@ -106,8 +102,4 @@ public class PacienteBean implements Serializable{
         this.paciente = paciente;
         return "alterar";
     }
-    
-    public void limpar(){
-        paciente = new Paciente();
-    }
-}
+ }

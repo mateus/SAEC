@@ -61,4 +61,18 @@ public class MedicoDAO {
             return null;
         }
     }
+    
+    public Medico getMedico(int id){
+        try{
+            EntityManager em = Conexao.getEntityManager();
+            Query q = em.createQuery("SELECT m FROM Medico m WHERE id=:id");
+            q.setParameter("id", id);
+
+            Medico medico = (Medico) q.getSingleResult();
+  
+            return medico;
+        }catch(Exception e){
+            return null;
+        }
+    }
 }

@@ -17,14 +17,14 @@
   <body> 
     <ui:include src="navbar.xhtml" />  
     
-    <div class="container-fluid">
+    <div class="container">
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="hero-unit">
                     <h2>Consultas Agendadas</h2>  
                 </div>
                 <div class="span10 offset1">
-                    <h:form name="consultas-agendadas">
+                    <h:form id="consultas-agendadas">
                         <h:dataTable class="table table-condensed table-hover" value="#{Agenda.listar()}" var="age">
 
                             <h:column>
@@ -40,14 +40,14 @@
                                 <f:facet name="header">
                                     <h:outputText value="Médico"/>
                                 </f:facet>
-                                <h:outputText value="#{age.agenda.medico.nome}" />
+                                <h:outputText value="#{Medico.buscaMedico(age.agenda.agendaPK.idMedico).nome}" />
                             </h:column>
 
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Exame"/>
                                 </f:facet>
-                                <h:outputText value="#{age.agenda.exame.nome}">
+                                <h:outputText value="#{Exame.buscaExame(age.agenda.agendaPK.idExame).nome}">
                                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                                 </h:outputText>
                             </h:column>
@@ -56,10 +56,10 @@
                                 <f:facet name="header">
                                     <h:outputText value="Paciente"/>
                                 </f:facet>
-                                <h:outputText value="#{age.agenda.paciente.nome}" />
+                                <h:outputText value="#{Paciente.buscaPaciente(age.agenda.agendaPK.idPaciente).nome}" />
                             </h:column>
 
-                            <h:column style="margin: 0px;">
+                            <h:column>
                                 <f:facet name="header">
                                 </f:facet>
                                 <h:commandLink class="btn btn-danger btn-small" action="#{age.remover}" value="Cancelar"/>

@@ -17,32 +17,32 @@
   <body> 
     <ui:include src="navbar.xhtml" />  
     
-    <div class="container-fluid">
+    <div class="container">
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="hero-unit">
                     <h2>Cadastrar Paciente</h2>  
                 </div>
                 <div class="span6 offset3">
-                    <h:form name="cad-pac-form">
+                    <h:form  id="cad-pac-form">
                         <fieldset>
                         <legend>Paciente</legend>
-                        <label><span style="color: red;">*</span> Nome</label>
-                        <h:inputText value="#{Paciente.paciente.nome}" maxlength="60" style="width:400px" />
-                        <label><span style="color: red;">*</span> Data de Nascimento</label>
-                        <h:inputText value="#{Paciente.paciente.dataNasc}" style="width:100px" maxlength="10" >
+                        <label for="cad-pac-form:nome"><span style="color: red;">*</span> Nome</label>
+                        <h:inputText value="#{Paciente.paciente.nome}" id="nome" style="width:400px" />
+                        <label for="cad-pac-form:dataNasc"><span style="color: red;">*</span> Data de Nascimento</label>
+                        <h:inputText value="#{Paciente.paciente.dataNasc}" id="dataNasc" style="width:100px" >
                             <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:inputText>
-                        <label>Logradouro</label>
-                        <h:inputTextarea value="#{Paciente.paciente.logradouro}" rows="3" maxlength="60" style="width:400px" />
-                        <label>Número</label>
-                        <h:inputText value="#{Paciente.paciente.numero}" maxlength="5" style="width:50px" />
-                        <label>Bairro</label>
-                        <h:inputText value="#{Paciente.paciente.bairro}" maxlength="60" style="width:250px" />
-                        <label>Cidade</label>
-                        <h:inputText value="#{Paciente.paciente.cidade}" maxlength="60" style="width:250px" />
-                        <label>UF</label>
-                        <h:selectOneMenu value="#{Paciente.paciente.uf}" >  
+                        <label for="cad-pac-form:logradouro">Logradouro</label>
+                        <h:inputTextarea value="#{Paciente.paciente.logradouro}" id="logradouro" rows="3" style="width:400px" />
+                        <label for="cad-pac-form:numero">Número</label>
+                        <h:inputText value="#{Paciente.paciente.numero}" id="numero" style="width:50px" />
+                        <label for="cad-pac-form:bairro">Bairro</label>
+                        <h:inputText value="#{Paciente.paciente.bairro}" id="bairro" style="width:250px" />
+                        <label for="cad-pac-form:cidade">Cidade</label>
+                        <h:inputText value="#{Paciente.paciente.cidade}" id="cidade" style="width:250px" />
+                        <label for="cad-pac-form:uf">UF</label>
+                        <h:selectOneMenu value="#{Paciente.paciente.uf}" id="uf" >  
                             <f:selectItem itemValue="AC" itemLabel="Acre"/> 
                             <f:selectItem itemValue="AL" itemLabel="Alagoas"/>  
                             <f:selectItem itemValue="AP" itemLabel="Amapá"/>  
@@ -74,9 +74,9 @@
                         </fieldset>
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
-                            <h:commandButton style="margin-top: 15px; margin-right: 10px;" class="btn btn-info" action="#{Paciente.limpar()}" value="Limpar"/>
+                            <h:commandButton style="margin-top: 15px; margin-right: 10px;" class="btn btn-info" type="reset" value="Limpar"/>
                             <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Paciente.cadastrar()}" value="Cadastrar"/>
-                            <h:message for="cad-pac-form" errorClass="error" />
+                            <h:messages for="cad-pac-form" styleClass="alert alert-info pull-right" style="margin-top: 15px; list-style: none; margin-right: 58px; padding-right: 15px;"/>                            
                         </center>
                     </h:form>
                 </div>

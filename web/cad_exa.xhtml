@@ -16,29 +16,29 @@
   <body> 
     <ui:include src="navbar.xhtml" />  
     
-    <div class="container-fluid">
+    <div class="container">
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="hero-unit">
                     <h2>Cadastrar Exame</h2>  
                 </div>
                 <div class="span6 offset3">
-                    <h:form name="cad-exa-form">            
+                    <h:form  id="cad-exa-form">            
                         <fieldset>
                         <legend>Exame</legend>
-                        <label><span style="color: red;">*</span> Nome</label>
-                        <h:inputText value="#{Exame.exame.nome}" maxlength="40" name="nome" style="width:400px" rendered="true" requiredMessage="Campo obrigatório" />
-                        <label><span style="color: red;">*</span> Valor</label>
+                        <label for="cad-exa-form:nome"><span style="color: red;">*</span> Nome</label>
+                        <h:inputText value="#{Exame.exame.nome}" id="nome" style="width:400px" />
+                        <label for="cad-exa-form:valor"><span style="color: red;">*</span> Valor</label>
                         <div class="input-prepend">
                             <span class="add-on">R$</span>
-                            <h:inputText value="#{Exame.exame.valor}" type="number" maxlength="10" name="valor" style="width:100px" rendered="true" requiredMessage="Campo obrigatório" />
+                            <h:inputText value="#{Exame.exame.valor}" id="valor" style="width:100px" />
                         </div>
                         </fieldset>
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
-                            <h:commandButton style="margin-top: 15px; margin-right: 10px;" class="btn btn-info" action="#{Exame.limpar()}" value="Limpar"/>
+                            <h:commandButton style="margin-top: 15px; margin-right: 10px;" class="btn btn-info" type="reset" value="Limpar"/>
                             <h:commandButton style="margin-top: 15px;" class="btn btn-primary" action="#{Exame.cadastrar()}" value="Cadastrar"/>
-                            <h:message for="cad-exa-form" errorClass="error" />
+                            <h:messages for="cad-exa-form" styleClass="alert alert-info pull-right" style="margin-top: 15px; list-style: none; margin-right: 58px; padding-right: 15px;"/>
                         </center>
                     </h:form>
                 </div>

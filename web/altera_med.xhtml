@@ -16,26 +16,26 @@
   <body> 
     <ui:include src="navbar.xhtml" />  
     
-    <div class="container-fluid">
+    <div class="container">
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="hero-unit">
                     <h2>Editar Médico</h2>  
                 </div>
                 <div class="span6 offset3">
-                    <h:form name="Alterar-med-form">            
+                    <h:form id="cad-med-form">            
                         <fieldset>
                         <legend>Médico</legend>
-                        <label><span style="color: red;">*</span> Nome</label>
-                        <h:inputText value="#{Medico.medico.nome}" maxlength="100" name="nome" style="width:400px" rendered="true" requiredMessage="Campo obrigatório" />
-                        <label><span style="color: red;">*</span> CRM</label>
-                        <h:inputText value="#{Medico.medico.crm}" maxlength="30" name="crm" style="width:150px" rendered="true" requiredMessage="Campo obrigatório" />
+                        <label for="cad-med-form:nome"><span style="color: red;">*</span> Nome</label>
+                        <h:inputText value="#{Medico.medico.nome}" id="nome" style="width:400px" />
+                        <label for="cad-med-form:crm"><span style="color: red;">*</span> CRM</label>
+                        <h:inputText value="#{Medico.medico.crm}" id="crm" style="width:150px" />
                         </fieldset>
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
-                            <h:commandButton style="margin-top: 15px; margin-right: 10px;" class="btn btn-info" action="#{Medico.limpar()}" value="Limpar"/>
+                            <h:commandButton style="margin-top: 15px; margin-right: 10px;" class="btn btn-info" type="reset" value="Limpar"/>
                             <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Medico.cadastrar()}" value="Alterar"/>
-                            <h:message for="alterar-med-form" errorClass="error" />
+                            <h:messages for="cad-med-form" styleClass="alert alert-info pull-right" style="margin-top: 15px; list-style: none; margin-right: 58px; padding-right: 15px;"/>
                         </center>
                     </h:form>
                 </div>

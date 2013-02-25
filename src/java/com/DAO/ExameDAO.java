@@ -60,4 +60,18 @@ public class ExameDAO {
             return null;
         }
     }
+    
+    public Exame getExame(int id){
+        try{
+            EntityManager em = Conexao.getEntityManager();
+            Query q = em.createQuery("SELECT e FROM Exame e WHERE id=:id");
+            q.setParameter("id", id);
+
+            Exame exame = (Exame) q.getSingleResult();
+  
+            return exame;
+        }catch(Exception e){
+            return null;
+        }
+    }
 }

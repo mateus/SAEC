@@ -2,19 +2,21 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
+        <Node id="agendar.xhtml" x="710" y="15" zoom="true"/>
         <Node id="footer.xhtml" x="29" y="24" zoom="true"/>
         <Node id="login.xhtml" x="37" y="539" zoom="true"/>
         <Node id="head.xhtml" x="443" y="18" zoom="true"/>
-        <Node id="cad_exa.xhtml" x="44" y="104" zoom="true"/>
+        <Node id="consultas_age.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="cad_exa.xhtml" x="222" y="97" zoom="true"/>
         <Node id="altera_pac.xhtml" x="294" y="403" zoom="true"/>
         <Node id="navbar.xhtml" x="236" y="25" zoom="true"/>
         <Node id="cad_pac.xhtml" x="25" y="181" zoom="true"/>
-        <Node id="lista_pac.xhtml" x="275" y="533" zoom="true"/>
         <Node id="altera_exa.xhtml" x="574" y="409" zoom="true"/>
+        <Node id="lista_pac.xhtml" x="275" y="533" zoom="true"/>
         <Node id="index.xhtml" x="82" y="397" zoom="true"/>
         <Node id="altera_med.xhtml" x="659" y="205" zoom="true"/>
         <Node id="lista_med.xhtml" x="664" y="353" zoom="true"/>
-        <Node id="cad_med.xhtml" x="34" y="142" zoom="true"/>
+        <Node id="cad_med.xhtml" x="643" y="74" zoom="true"/>
         <Node id="lista_exa.xhtml" x="572" y="535" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>

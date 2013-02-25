@@ -18,7 +18,6 @@ import javax.faces.model.ListDataModel;
  */
 public class ExameBean {
     Exame exame;
-    private List<ExameBean> examesBean = new ArrayList();
 
     public ExameBean() {
         exame = new Exame();
@@ -37,33 +36,33 @@ public class ExameBean {
     }
     
     public void cadastrar(){
-        if(!exame.getNome().trim().isEmpty() && exame.getValor() > 0){
+        if(!exame.getNome().trim().isEmpty() && exame.getValor() >= 0){
             ExameDAO exameDAO = new ExameDAO();
             if(exameDAO.cadastrar(exame)){
                 exame = new Exame();
                 FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Operação realizada com sucesso.");
+                FacesMessage msg = new FacesMessage("Operação realizada com sucesso");
                 contexto.addMessage("cad-exa-form", msg);
             }else{
                 FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Erro ao inserir no banco de dados.");
+                FacesMessage msg = new FacesMessage("Erro ao inserir no banco de dados");
                 contexto.addMessage("cad-exa-form", msg);
             }
         }
         else {
             FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios.");
+            FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios");
             contexto.addMessage("cad-exa-form", msg);
         }
     }
     
     public ListDataModel listar(){
         ExameDAO exameDAO = new ExameDAO();
-        examesBean = new ArrayList();
+        List<ExameBean> examesBean = new ArrayList();
         
         if (exameDAO.getExames() != null){
-            for (Exame exame : exameDAO.getExames()){
-                examesBean.add(new ExameBean(exame));
+            for (Exame e : exameDAO.getExames()){
+                examesBean.add(new ExameBean(e));
             }
             return new ListDataModel(examesBean);
         }else{
@@ -73,16 +72,22 @@ public class ExameBean {
     
     public List<ExameBean> listarNomeId(){
         ExameDAO exameDAO = new ExameDAO();
-        examesBean = new ArrayList();
+        List<ExameBean> examesBean = new ArrayList();
         
         if (exameDAO.getExames() != null){
-            for (Exame exame : exameDAO.getExames()){
-                examesBean.add(new ExameBean(exame));
+            for (Exame e : exameDAO.getExames()){
+                examesBean.add(new ExameBean(e));
             }
             return examesBean;
         }else{
             return null;
         }
+    }
+    
+    public Exame buscaExame(int id){
+        ExameDAO exameDAO = new ExameDAO();
+        exame = exameDAO.getExame(id);
+        return exame;  
     }
     
     public void remover(){
