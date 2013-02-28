@@ -13,6 +13,16 @@
     <h:outputStylesheet name="bootstrap-responsive.css" library="css" />
     <h:outputStylesheet name="my-style.css" library="css" />
     <link href="resources/img/favicon.gif" type="image/png" rel="icon" /> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+    <script type="text/javascript">
+            function add_atributo_form(formulario, elemento, atributo, valor){
+                var campo = $("#" + formulario + "\\:" + elemento);
+                campo.attr(atributo, valor);
+            }
+            $(document).ready(function() {
+                add_atributo_form("agendar-form", "dataHora", "placeholder", "dd/MM/aaaa HH:mm");               
+            });
+    </script>
   </h:head>
   <body> 
     <ui:include src="navbar.xhtml" />  

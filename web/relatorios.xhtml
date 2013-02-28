@@ -13,6 +13,18 @@
     <h:outputStylesheet name="bootstrap-responsive.css" library="css" />
     <h:outputStylesheet name="my-style.css" library="css" />
     <link href="resources/img/favicon.gif" type="image/png" rel="icon" /> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+    <script type="text/javascript">
+            function add_atributo_form(formulario, elemento, atributo, valor){
+                var campo = $("#" + formulario + "\\:" + elemento);
+                campo.attr(atributo, valor);
+            }
+            $(document).ready(function() {
+                add_atributo_form("relatorio-form", "data-inicial", "placeholder", "dd/MM/aaaa HH:mm");
+                add_atributo_form("relatorio-form", "data-final", "placeholder", "dd/MM/aaaa HH:mm");
+               
+            });
+        </script>
   </h:head>
   <body> 
     <ui:include src="navbar.xhtml" />  
@@ -29,11 +41,11 @@
                         <legend>Período</legend>
                         <label for="relatorio-form:data-inicial"><span style="color: red;">*</span> Data inicial</label>
                         <h:inputText value="#{Relatorio.dataInicial}" id="data-inicial" style="width:150px" >
-                            <f:convertDateTime pattern="yyyy-MM-dd" />
+
                         </h:inputText>
                         <label for="relatorio-form:data-final"><span style="color: red;">*</span> Data final</label>
                         <h:inputText value="#{Relatorio.dataFinal}" id="data-final" style="width:150px" >
-                            <f:convertDateTime pattern="yyyy-MM-dd" />
+
                         </h:inputText>
                         
                         <label></label>
@@ -42,7 +54,7 @@
                         </fieldset>
                         <label style="padding-top: 10px;"><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
-                            <h:commandButton style="margin-top: 15px;" class="btn btn-primary" action="#{Relatorio.pesquisar()}" value="Pesquisar"/>
+                            <h:commandButton style="margin-top: 15px;" class="btn btn-primary" action="#{Relatorio.redirecionar(Relatorio.dataInicial, Relatorio.dataFinal, Relatorio.faturamento)}" value="Pesquisar"/>
                             <h:messages for="relatorio-form" styleClass="alert alert-info pull-right" style="margin-top: 15px; list-style: none; margin-right: 58px; padding-right: 15px;"/>
                         </center>
                     </h:form>

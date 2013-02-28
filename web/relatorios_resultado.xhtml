@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+  <h:head>
+    <meta charset="utf-8" />
+    <title>SAEC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Mateus Ferreira Silva" />
+
+    <h:outputStylesheet name="bootstrap.css" library="css" />
+    <h:outputStylesheet name="bootstrap-responsive.css" library="css" />
+    <h:outputStylesheet name="my-style.css" library="css" />
+    <link href="resources/img/favicon.gif" type="image/png" rel="icon" /> 
+  </h:head>
+  <body> 
+    <ui:include src="navbar.xhtml" />  
+    
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span8 offset2">
+                <div class="hero-unit">
+                    <h2>Relatório</h2>  
+                </div>
+                <div class="span8 offset2">
+                    <h:form name="relatorios-resultado">
+                        <h:dataTable  class="table table-condensed table-hover" value="#{Relatorio.pesquisar()}" var="rel" >
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ID Exame"/>
+                                </f:facet>
+                                <h:outputText value="#{rel.agenda.agendaPK.idExame}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Exame"/>
+                                </f:facet>
+                                <h:outputText value="#{Exame.buscaExame(rel.agenda.agendaPK.idExame).nome}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Data"/>
+                                </f:facet>
+                                <h:outputText value="#{rel.agenda.agendaPK.dataHora}"/>
+                            </h:column>
+                            
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Paciente"/>
+                                </f:facet>
+                                <h:outputText value="#{Paciente.buscaPaciente(rel.agenda.agendaPK.idPaciente).nome}"/>
+                            </h:column>
+
+                        </h:dataTable>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <ui:include src="footer.xhtml" />
+    
+    <script src="resources/js/jquery.js"></script>
+    <script src="resources/js/bootstrap-transition.js"></script>
+    <script src="resources/js/bootstrap-alert.js"></script>
+    <script src="resources/js/bootstrap-modal.js"></script>
+    <script src="resources/js/bootstrap-dropdown.js"></script>
+    <script src="resources/js/bootstrap-scrollspy.js"></script>
+    <script src="resources/js/bootstrap-tab.js"></script>
+    <script src="resources/js/bootstrap-tooltip.js"></script>
+    <script src="resources/js/bootstrap-popover.js"></script>
+    <script src="resources/js/bootstrap-button.js"></script>
+    <script src="resources/js/bootstrap-collapse.js"></script>
+    <script src="resources/js/bootstrap-carousel.js"></script>
+    <script src="resources/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>

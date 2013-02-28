@@ -55,10 +55,6 @@
             <from-outcome>Inicio</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
-        <navigation-case>
-            <from-outcome>cad_pac</from-outcome>
-            <to-view-id>/cad_pac.xhtml</to-view-id>
-        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/lista_pac.xhtml</from-view-id>
@@ -79,6 +75,13 @@
         <navigation-case>
             <from-outcome>alterar</from-outcome>
             <to-view-id>/altera_exa.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/relatorios.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>pesquisar</from-outcome>
+            <to-view-id>/relatorios_resultado.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>
