@@ -26,6 +26,7 @@
                     <h:form id="cad-exa-form">            
                         <fieldset>
                         <legend>Exame</legend>
+                        <h:inputHidden value="#{Exame.exame.idExame}" id="id" />
                         <label for="cad-exa-form:nome"><span style="color: red;">*</span> Nome</label>
                         <h:inputText value="#{Exame.exame.nome}" id="nome" style="width:400px" />
                         <label for="cad-exa-form:valor"><span style="color: red;">*</span> Valor</label>
@@ -36,8 +37,7 @@
                         </fieldset>
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
-                            <h:commandButton style="margin-top: 15px; margin-right: 10px;" class="btn btn-info" type="reset" value="Limpar"/>
-                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Exame.cadastrar()}" value="Cadastrar"/>
+                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Exame.alterarDados()}" value="Alterar"/>
                             <h:messages for="cad-exa-form" styleClass="alert alert-info pull-right" style="margin-top: 15px; list-style: none; margin-right: 58px; padding-right: 15px;"/>
                         </center>
                     </h:form>

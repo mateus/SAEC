@@ -32,6 +32,26 @@ public class ExameDAO {
         }        
     }
     
+    public boolean alterar(Exame exame){
+        EntityManager em = Conexao.getEntityManager();
+        EntityTransaction et = em.getTransaction();
+        try {
+            Exame exa = em.find(Exame.class, exame.getIdExame());
+            exa.setNome(exame.getNome());
+            exa.setValor(exame.getValor());
+            
+            et.begin();
+            em.persist(exa);
+            et.commit();
+            return true;
+        } catch (Exception e) {
+            if (et.isActive()) {
+                et.rollback();
+            }
+            return false;
+        }        
+    }
+    
     public boolean deletar(Exame exame){
         EntityManager em = Conexao.getEntityManager();
         EntityTransaction et = em.getTransaction();

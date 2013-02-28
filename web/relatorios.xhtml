@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
   <h:head>
     <meta charset="utf-8" />
     <title>SAEC</title>
@@ -20,25 +21,29 @@
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="hero-unit">
-                    <h2>Editar Exame</h2>  
+                    <h2>Relatórios</h2>  
                 </div>
                 <div class="span6 offset3">
-                    <h:form id="cad-exa-form">            
+                    <h:form id="relatorio-form">            
                         <fieldset>
-                        <legend>Exame</legend>
-                        <h:inputHidden value="#{Exame.exame.idExame}" id="id" />
-                        <label for="cad-exa-form:nome"><span style="color: red;">*</span> Nome</label>
-                        <h:inputText value="#{Exame.exame.nome}" id="nome" style="width:400px" />
-                        <label for="cad-exa-form:valor"><span style="color: red;">*</span> Valor</label>
-                        <div class="input-prepend">
-                            <span class="add-on">R$</span>
-                            <h:inputText value="#{Exame.exame.valor}" id="valor" style="width:100px" />
-                        </div>
+                        <legend>Período</legend>
+                        <label for="relatorio-form:data-inicial"><span style="color: red;">*</span> Data inicial</label>
+                        <h:inputText value="#{Relatorio.dataInicial}" id="data-inicial" style="width:150px" >
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:inputText>
+                        <label for="relatorio-form:data-final"><span style="color: red;">*</span> Data final</label>
+                        <h:inputText value="#{Relatorio.dataFinal}" id="data-final" style="width:150px" >
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:inputText>
+                        
+                        <label></label>
+                        <h:selectBooleanCheckbox value="#{Relatorio.faturamento}" style="margin-bottom: 5px;" id="relatorio-valorTotal"/> Valor total dos exames                   
+                        
                         </fieldset>
-                        <label><span style="color: red;">*</span> Campos obrigatórios</label>
+                        <label style="padding-top: 10px;"><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
-                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Exame.alterarDados()}" value="Alterar"/>
-                            <h:messages for="cad-exa-form" styleClass="alert alert-info pull-right" style="margin-top: 15px; list-style: none; margin-right: 58px; padding-right: 15px;"/>
+                            <h:commandButton style="margin-top: 15px;" class="btn btn-primary" action="#{Relatorio.pesquisar()}" value="Pesquisar"/>
+                            <h:messages for="relatorio-form" styleClass="alert alert-info pull-right" style="margin-top: 15px; list-style: none; margin-right: 58px; padding-right: 15px;"/>
                         </center>
                     </h:form>
                 </div>

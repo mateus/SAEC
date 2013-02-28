@@ -32,6 +32,31 @@ public class PacienteDAO {
         }        
     }
     
+    public boolean alterar(Paciente paciente){
+        EntityManager em = Conexao.getEntityManager();
+        EntityTransaction et = em.getTransaction();
+        try {
+            Paciente pac = em.find(Paciente.class, paciente.getIdPaciente());
+            pac.setNome(paciente.getNome());
+            pac.setDataNasc(paciente.getDataNasc());
+            pac.setBairro(paciente.getBairro());
+            pac.setCidade(paciente.getCidade());
+            pac.setLogradouro(paciente.getLogradouro());
+            pac.setUf(paciente.getUf());
+            pac.setNumero(paciente.getNumero());
+            
+            et.begin();
+            em.persist(pac);
+            et.commit();
+            return true;
+        } catch (Exception e) {
+            if (et.isActive()) {
+                et.rollback();
+            }
+            return false;
+        }        
+    }
+    
     public boolean deletar(Paciente paciente){
         EntityManager em = Conexao.getEntityManager();
         EntityTransaction et = em.getTransaction();

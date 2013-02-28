@@ -33,6 +33,26 @@ public class MedicoDAO {
         }        
     }
     
+    public boolean alterar(Medico medico){
+        EntityManager em = Conexao.getEntityManager();
+        EntityTransaction et = em.getTransaction();
+        try {
+            Medico med = em.find(Medico.class, medico.getIdMedico());
+            med.setNome(medico.getNome());
+            med.setCrm(medico.getCrm());
+            
+            et.begin();
+            em.persist(med);
+            et.commit();
+            return true;
+        } catch (Exception e) {
+            if (et.isActive()) {
+                et.rollback();
+            }
+            return false;
+        }        
+    }
+ 
     public boolean deletar(Medico medico){
         EntityManager em = Conexao.getEntityManager();
         EntityTransaction et = em.getTransaction();

@@ -27,6 +27,7 @@
                     <h:form id="cad-pac-form">
                         <fieldset>
                         <legend>Paciente</legend>
+                        <h:inputHidden value="#{Paciente.paciente.idPaciente}" id="id" />
                         <label for="cad-pac-form:nome"><span style="color: red;">*</span> Nome</label>
                         <h:inputText value="#{Paciente.paciente.nome}" id="nome" style="width:400px" />
                         <label for="cad-pac-form:dataNasc"><span style="color: red;">*</span> Data de Nascimento</label>
@@ -74,8 +75,7 @@
                         </fieldset>
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
-                            <h:commandButton style="margin-top: 15px; margin-right: 10px;" class="btn btn-info" type="reset" value="Limpar"/>
-                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Paciente.cadastrar()}" value="Alterar"/>
+                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Paciente.alterarDados()}" value="Alterar"/>
                             <h:messages for="cad-pac-form" styleClass="alert alert-info pull-right" style="margin-top: 15px; list-style: none; margin-right: 58px; padding-right: 15px;"/>
                         </center>
                     </h:form>
