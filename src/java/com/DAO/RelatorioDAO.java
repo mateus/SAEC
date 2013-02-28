@@ -4,14 +4,9 @@
  */
 package com.DAO;
 
-import com.control.RelatorioBean;
 import com.model.Agenda;
-import com.model.AgendaPK;
 import com.util.Conexao;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import javax.faces.model.ListDataModel;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 

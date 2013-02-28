@@ -23,7 +23,16 @@ import javax.faces.model.ListDataModel;
 public class RelatorioBean {
     String dataInicial, dataFinal;
     boolean faturamento = false;
+    float total = 0;
 
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+    
     public String getDataInicial() {
         return dataInicial;
     }
@@ -69,5 +78,9 @@ public class RelatorioBean {
         }else{
             return null;
         }
+    }
+    
+    public void total(float valor){
+        this.total += valor;
     }
 }

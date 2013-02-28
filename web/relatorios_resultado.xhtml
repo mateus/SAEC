@@ -63,11 +63,19 @@
                                     <f:facet name="header">
                                         <h:outputText value="Valor"/>
                                     </f:facet>
-                                <h:outputText value="R$ #{Exame.buscaExame(rel.agenda.agendaPK.idExame).valor}"/>
-                            </h:column>
+                                    <h:outputText value="R$ #{Exame.buscaExame(rel.agenda.agendaPK.idExame).valor}" />
+                                    <h:inputHidden value="#{Relatorio.total(Exame.buscaExame(rel.agenda.agendaPK.idExame).valor)}"  />
+                                </h:column>
                             </c:if>
-
+                            
                         </h:dataTable>
+                        
+                        <c:if test="#{Relatorio.faturamento}">
+                            <div class="input-prepend pull-right">
+                                <span class="add-on">Total</span>
+                                <h:inputText readonly="true" value="R$ #{Relatorio.total}" style="width: 70px; text-align: right;"/>
+                            </div>
+                        </c:if>
                     </h:form>
                 </div>
             </div>
