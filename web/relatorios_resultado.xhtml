@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
   <h:head>
     <meta charset="utf-8" />
     <title>SAEC</title>
@@ -45,7 +46,9 @@
                                 <f:facet name="header">
                                     <h:outputText value="Data"/>
                                 </f:facet>
-                                <h:outputText value="#{rel.agenda.agendaPK.dataHora}"/>
+                                <h:outputText value="#{rel.agenda.agendaPK.dataHora}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                                </h:outputText>
                             </h:column>
                             
                             <h:column>
@@ -54,6 +57,15 @@
                                 </f:facet>
                                 <h:outputText value="#{Paciente.buscaPaciente(rel.agenda.agendaPK.idPaciente).nome}"/>
                             </h:column>
+                            
+                            <c:if test="#{Relatorio.faturamento}">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Valor"/>
+                                    </f:facet>
+                                <h:outputText value="R$ #{Exame.buscaExame(rel.agenda.agendaPK.idExame).valor}"/>
+                            </h:column>
+                            </c:if>
 
                         </h:dataTable>
                     </h:form>
