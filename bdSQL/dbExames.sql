@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 01/03/2013 às 00h30min
+-- Tempo de Geração: 01/03/2013 às 19h18min
 -- Versão do Servidor: 5.5.29
 -- Versão do PHP: 5.3.10-1ubuntu3.5
 
@@ -19,6 +19,8 @@ SET time_zone = "+03:00";
 --
 -- Banco de Dados: `dbExames`
 --
+CREATE DATABASE `dbExames` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `dbExames`;
 
 -- --------------------------------------------------------
 
@@ -81,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `paciente` (
   `cidade` varchar(60) DEFAULT NULL,
   `uf` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`idPaciente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
@@ -94,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `usuario` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Restrições para as tabelas dumpadas
