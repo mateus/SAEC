@@ -36,43 +36,41 @@ public class ExameBean {
     }
     
     public void cadastrar(){
+        FacesContext contexto = FacesContext.getCurrentInstance();
+        FacesMessage msg;
         if(!exame.getNome().trim().isEmpty() && exame.getValor() >= 0){
             ExameDAO exameDAO = new ExameDAO();
             if(exameDAO.cadastrar(exame)){
                 exame = new Exame();
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Operação realizada com sucesso");
+                msg = new FacesMessage("Operação realizada com sucesso");
                 contexto.addMessage("cad-exa-form", msg);
             }else{
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Erro ao inserir no banco de dados");
+                msg = new FacesMessage("Erro ao inserir no banco de dados");
                 contexto.addMessage("cad-exa-form", msg);
             }
         }
         else {
-            FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios");
+            msg = new FacesMessage("Preencha os campos obrigatórios");
             contexto.addMessage("cad-exa-form", msg);
         }
     }
     
     public void alterarDados(){
+        FacesContext contexto = FacesContext.getCurrentInstance();
+        FacesMessage msg;
         if(!exame.getNome().trim().isEmpty() && exame.getValor() >= 0){
             ExameDAO exameDAO = new ExameDAO();
             if(exameDAO.alterar(exame)){
                 exame = new Exame();
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Operação realizada com sucesso");
+                msg = new FacesMessage("Operação realizada com sucesso");
                 contexto.addMessage("cad-exa-form", msg);
             }else{
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Erro ao inserir no banco de dados");
+                msg = new FacesMessage("Erro ao inserir no banco de dados");
                 contexto.addMessage("cad-exa-form", msg);
             }
         }
         else {
-            FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios");
+            msg = new FacesMessage("Preencha os campos obrigatórios");
             contexto.addMessage("cad-exa-form", msg);
         }
     }

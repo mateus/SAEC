@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+  <f:metadata>
+    <f:event type="preRenderView" listener="#{Usuario.verificaLogin()}"/>
+  </f:metadata>   
   <h:head>
     <meta charset="utf-8" />
     <title>SAEC</title>
@@ -11,7 +15,7 @@
     <h:outputStylesheet name="bootstrap.css" library="css" />
     <h:outputStylesheet name="bootstrap-responsive.css" library="css" />
     <h:outputStylesheet name="my-style.css" library="css" />
-    <link href="resources/img/favicon.gif" type="image/png" rel="icon" /> 
+    <link href="resources/img/favicon.gif" type="image/png" rel="icon" />
   </h:head>
   <body> 
     <ui:include src="navbar.xhtml" />  
@@ -27,12 +31,14 @@
                         <fieldset>
                         <legend>Exame</legend>
                         <label for="cad-exa-form:nome"><span style="color: red;">*</span> Nome</label>
-                        <h:inputText value="#{Exame.exame.nome}" id="nome" style="width:400px" />
+                        <h:inputText value="#{Exame.exame.nome}" id="nome" style="width:200px" maxlength="50" required="true" requiredMessage="Campo obrigatório" />
+                        <h:message for="nome" styleClass="alert alert-danger pull-right" style="margin-top: 0px; list-style: none; margin-right: 15px; padding: 4px 10px 4px 10px;" />
                         <label for="cad-exa-form:valor"><span style="color: red;">*</span> Valor</label>
                         <div class="input-prepend">
                             <span class="add-on">R$</span>
-                            <h:inputText value="#{Exame.exame.valor}" id="valor" style="width:100px" />
+                            <h:inputText value="#{Exame.exame.valor}" id="valor" style="width:80px" required="true" requiredMessage="Campo obrigatório" />    
                         </div>
+                        <h:message for="valor" styleClass="alert alert-danger pull-right" style="margin-top: 0px; list-style: none; margin-right: 105px; padding: 4px 10px 4px 10px;" />
                         </fieldset>
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>

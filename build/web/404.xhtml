@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
   <f:metadata>
     <f:event type="preRenderView" listener="#{Usuario.verificaLogin()}"/>
-  </f:metadata> 
+  </f:metadata>  
   <h:head>
     <meta charset="utf-8" />
     <title>SAEC</title>
@@ -24,27 +24,9 @@
         <div class="row-fluid">
             <div class="span8 offset2">
                 <div class="hero-unit">
-                    <h2>Editar Médico</h2>  
+                    <h2>Página não encontrada</h2>  
                 </div>
-                <div class="span6 offset3">
-                    <h:form id="cad-med-form">            
-                        <fieldset>
-                        <legend>Médico</legend>
-                        <h:inputHidden value="#{Medico.medico.idMedico}" id="id" />
-                        <label for="cad-med-form:nome"><span style="color: red;">*</span> Nome</label>
-                        <h:inputText value="#{Medico.medico.nome}" id="nome" style="width:200px" maxlength="50" required="true" requiredMessage="Campo obrigatório" />
-                        <h:message for="nome" styleClass="alert alert-danger pull-right" style="margin-top: 0px; list-style: none; margin-right: 15px; padding: 4px 10px 4px 10px;" />
-                        <label for="cad-med-form:crm"><span style="color: red;">*</span> CRM</label>
-                        <h:inputText value="#{Medico.medico.crm}" id="crm" style="width:150px" maxlength="20" required="true" requiredMessage="Campo obrigatório" />
-                        <h:message for="crm" styleClass="alert alert-danger pull-right" style="margin-top: 0px; list-style: none; margin-right: 65px; padding: 4px 10px 4px 10px;" />
-                        </fieldset>
-                        <label><span style="color: red;">*</span> Campos obrigatórios</label>
-                        <center>
-                            <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Medico.alterarDados()}" value="Alterar"/>
-                            <h:messages for="cad-med-form" styleClass="alert alert-info pull-right" style="margin-top: 15px; list-style: none; margin-right: 58px; padding-right: 15px;"/>
-                        </center>
-                    </h:form>
-                </div>
+                <div style="text-align: center;"><h3>Erro 404</h3></div>                
             </div>
         </div>
     </div>

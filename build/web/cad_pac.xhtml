@@ -3,6 +3,9 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
+  <f:metadata>
+    <f:event type="preRenderView" listener="#{Usuario.verificaLogin()}"/>
+  </f:metadata> 
   <h:head>
     <meta charset="utf-8" />
     <title>SAEC</title>
@@ -19,8 +22,14 @@
                 var campo = $("#" + formulario + "\\:" + elemento);
                 campo.attr(atributo, valor);
             }
+            function add_mascara_form(formulario, elemento, mascara, placeholder){
+                var campo = $("#" + formulario + "\\:" + elemento);
+                campo.mask(mascara, {placeholder : placeholder});
+            }
             $(document).ready(function() {
                 add_atributo_form("cad-pac-form", "dataNasc", "placeholder", "dd/mm/aaaa");               
+                add_mascara_form("cad-pac-form", "dataNasc", "99/99/9999" , "_");
+                add_mascara_form("cad-pac-form", "numero", "999999", " ");
             });
     </script>
   </h:head>
@@ -38,11 +47,13 @@
                         <fieldset>
                         <legend>Paciente</legend>
                         <label for="cad-pac-form:nome"><span style="color: red;">*</span> Nome</label>
-                        <h:inputText value="#{Paciente.paciente.nome}" id="nome" style="width:400px" />
+                        <h:inputText value="#{Paciente.paciente.nome}" id="nome" style="width:200px" maxlength="50" required="true" requiredMessage="Campo obrigatório" />
+                        <h:message for="nome" styleClass="alert alert-danger pull-right" style="margin-top: 0px; list-style: none; margin-right: 55px; padding: 4px 10px 4px 10px;" />
                         <label for="cad-pac-form:dataNasc"><span style="color: red;">*</span> Data de Nascimento</label>
-                        <h:inputText value="#{Paciente.paciente.dataNasc}" id="dataNasc" style="width:100px" >
+                        <h:inputText value="#{Paciente.paciente.dataNasc}" id="dataNasc" style="width:100px" required="true" requiredMessage="Campo obrigatório" >
                             <f:convertDateTime pattern="dd/MM/yyyy" />
                         </h:inputText>
+                        <h:message for="dataNasc" styleClass="alert alert-danger pull-right" style="margin-top: 0px; list-style: none; margin-right: 155px; padding: 4px 10px 4px 10px;" />
                         <label for="cad-pac-form:logradouro">Logradouro</label>
                         <h:inputTextarea value="#{Paciente.paciente.logradouro}" id="logradouro" rows="3" style="width:400px" />
                         <label for="cad-pac-form:numero">Número</label>
@@ -85,7 +96,8 @@
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>
                             <h:commandButton style="margin-top: 15px" class="btn btn-primary" action="#{Paciente.cadastrar()}" value="Cadastrar"/>
-                            <h:messages for="cad-pac-form" styleClass="alert alert-info pull-right" style="margin-top: 15px; list-style: none; margin-right: 58px; padding-right: 15px;"/>                            
+                            <h:messages for="cad-pac-form" styleClass="alert alert-info pull-right" style="margin-top: 15px; list-style: none; margin-right: 58px; padding-right: 15px;"/>
+                            
                         </center>
                     </h:form>
                 </div>
@@ -96,6 +108,7 @@
     <ui:include src="footer.xhtml" />
     
     <script src="resources/js/jquery.js"></script>
+    <script src="resources/js/jquery.maskedinput.min.js"></script>
     <script src="resources/js/bootstrap-transition.js"></script>
     <script src="resources/js/bootstrap-alert.js"></script>
     <script src="resources/js/bootstrap-modal.js"></script>

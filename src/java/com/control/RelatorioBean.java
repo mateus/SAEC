@@ -6,14 +6,10 @@ package com.control;
 
 import com.DAO.RelatorioDAO;
 import com.model.Agenda;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 
 /**
@@ -58,11 +54,17 @@ public class RelatorioBean {
     }
     
     public String redirecionar(String dataInicial, String dataFinal, boolean faturamento){
-        this.dataInicial = dataInicial.substring(6, 10)+"-"+dataInicial.substring(3, 5)+"-"+dataInicial.substring(0, 2)+" "+dataInicial.substring(11, dataInicial.length());
-        this.dataFinal = dataFinal.substring(6, 10)+"-"+dataFinal.substring(3, 5)+"-"+dataFinal.substring(0, 2)+" "+dataFinal.substring(11, dataFinal.length());
-        this.faturamento = faturamento;
-        
-        return "pesquisar";
+        if(!dataInicial.isEmpty() && !dataFinal.isEmpty()){
+            this.dataInicial = dataInicial.substring(6, 10)+"-"+dataInicial.substring(3, 5)+"-"+dataInicial.substring(0, 2)+" "+dataInicial.substring(11, dataInicial.length());
+            this.dataFinal = dataFinal.substring(6, 10)+"-"+dataFinal.substring(3, 5)+"-"+dataFinal.substring(0, 2)+" "+dataFinal.substring(11, dataFinal.length());
+            this.faturamento = faturamento;
+            return "pesquisar";
+        }else {
+            FacesContext contexto = FacesContext.getCurrentInstance();
+            FacesMessage msg = new FacesMessage("Preencha os campos corretamente");
+            contexto.addMessage("relatorio-form", msg);
+            return null;
+        }
     }
     
     public ListDataModel pesquisar(){      

@@ -36,43 +36,41 @@ public class MedicoBean {
     }
     
     public void cadastrar(){
+        FacesContext contexto = FacesContext.getCurrentInstance();
+        FacesMessage msg;
         if(!medico.getNome().trim().isEmpty() && !medico.getCrm().trim().isEmpty()){
             MedicoDAO medicoDAO = new MedicoDAO();
             if(medicoDAO.cadastrar(medico)){
                 medico = new Medico();
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Operação realizada com sucesso");
+                msg = new FacesMessage("Operação realizada com sucesso");
                 contexto.addMessage("cad-med-form", msg);
             }else{
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Erro ao inserir no banco de dados");
+                msg = new FacesMessage("Erro ao inserir no banco de dados");
                 contexto.addMessage("cad-med-form", msg);
             }
         }
         else {
-            FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios");
+            msg = new FacesMessage("Preencha os campos obrigatórios");
             contexto.addMessage("cad-med-form", msg);
         }
     }
     
     public void alterarDados(){
+        FacesContext contexto = FacesContext.getCurrentInstance();
+        FacesMessage msg;
         if(!medico.getNome().trim().isEmpty() && !medico.getCrm().trim().isEmpty()){
             MedicoDAO medicoDAO = new MedicoDAO();
             if(medicoDAO.alterar(medico)){
                 medico = new Medico();
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Operação realizada com sucesso");
+                msg = new FacesMessage("Operação realizada com sucesso");
                 contexto.addMessage("cad-med-form", msg);
             }else{
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Erro ao inserir no banco de dados");
+                msg = new FacesMessage("Erro ao inserir no banco de dados");
                 contexto.addMessage("cad-med-form", msg);
             }
         }
         else {
-            FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios");
+            msg = new FacesMessage("Preencha os campos obrigatórios");
             contexto.addMessage("cad-med-form", msg);
         }
     }

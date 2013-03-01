@@ -72,23 +72,22 @@ public class AgendaBean {
     }
     
     public void cadastrar(){
+        FacesContext contexto = FacesContext.getCurrentInstance();
+        FacesMessage msg;
         if(agenda.getAgendaPK().getDataHora() != null){
             AgendaDAO agendaDAO = new AgendaDAO();
             if(agendaDAO.cadastrar(agenda)){
                 agendaPK = new AgendaPK();
                 agenda = new Agenda(agendaPK);
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Operação realizada com sucesso");
+                msg = new FacesMessage("Operação realizada com sucesso");
                 contexto.addMessage("agendar-form", msg);
             }else{
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Verifique se existe uma consulta nesta Data e Hora");
+                msg = new FacesMessage("Verifique se existe uma consulta nesta Data e Hora");
                 contexto.addMessage("agendar-form", msg);
             }
         }
         else {
-            FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios");
+            msg = new FacesMessage("Preencha os campos obrigatórios");
             contexto.addMessage("agendar-form", msg);
         }
     }

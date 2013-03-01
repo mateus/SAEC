@@ -51,4 +51,5 @@
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="dbexames" object-type="user" pool-name="mysql_dbExames_rootPool_1"/>
+    <jdbc-resource enabled="true" jndi-name="dbexame" object-type="user" pool-name="mysql_dbExames_rootPool_1"/>
 </resources>

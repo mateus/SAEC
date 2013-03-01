@@ -3,6 +3,9 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
+  <f:metadata>
+    <f:event type="preRenderView" listener="#{Usuario.verificaLogin()}"/>
+  </f:metadata> 
   <h:head>
     <meta charset="utf-8" />
     <title>SAEC</title>
@@ -19,10 +22,15 @@
                 var campo = $("#" + formulario + "\\:" + elemento);
                 campo.attr(atributo, valor);
             }
+            function add_mascara_form(formulario, elemento, mascara, placeholder){
+                var campo = $("#" + formulario + "\\:" + elemento);
+                campo.mask(mascara, {placeholder : placeholder});
+            }
             $(document).ready(function() {
                 add_atributo_form("relatorio-form", "data-inicial", "placeholder", "dd/mm/aaaa hh:mm");
                 add_atributo_form("relatorio-form", "data-final", "placeholder", "dd/mm/aaaa hh:mm");
-               
+                add_mascara_form("relatorio-form", "data-inicial", "99/99/9999 99:99" , "_");
+                add_mascara_form("relatorio-form", "data-final", "99/99/9999 99:99" , "_");
             });
     </script>
   </h:head>
@@ -40,13 +48,12 @@
                         <fieldset>
                         <legend>Período</legend>
                         <label for="relatorio-form:data-inicial"><span style="color: red;">*</span> Data inicial</label>
-                        <h:inputText value="#{Relatorio.dataInicial}" id="data-inicial" style="width:150px" >
+                        <h:inputText value="#{Relatorio.dataInicial}" id="data-inicial" style="width:150px" required="true" requiredMessage="Campo obrigatório" />
+                        <h:message for="data-inicial" styleClass="alert alert-danger pull-right" style="margin-top: 0px; list-style: none; margin-right: 65px; padding: 4px 10px 4px 10px;" />
 
-                        </h:inputText>
                         <label for="relatorio-form:data-final"><span style="color: red;">*</span> Data final</label>
-                        <h:inputText value="#{Relatorio.dataFinal}" id="data-final" style="width:150px" >
-
-                        </h:inputText>
+                        <h:inputText value="#{Relatorio.dataFinal}" id="data-final" style="width:150px" required="true" requiredMessage="Campo obrigatório" />
+                        <h:message for="data-final" styleClass="alert alert-danger pull-right" style="margin-top: 0px; list-style: none; margin-right: 65px; padding: 4px 10px 4px 10px;" />
                         
                         <label></label>
                         <h:selectBooleanCheckbox value="#{Relatorio.faturamento}" style="margin-bottom: 5px;" id="relatorio-valorTotal"/> Valor total dos exames                   
@@ -66,6 +73,7 @@
     <ui:include src="footer.xhtml" />
     
     <script src="resources/js/jquery.js"></script>
+    <script src="resources/js/jquery.maskedinput.min.js"></script>
     <script src="resources/js/bootstrap-transition.js"></script>
     <script src="resources/js/bootstrap-alert.js"></script>
     <script src="resources/js/bootstrap-modal.js"></script>

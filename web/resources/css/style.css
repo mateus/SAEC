@@ -14,6 +14,20 @@ body {
 	text-decoration: none;
 }
 
+.alert {
+  padding: 3px 5px 5px 3px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  color: #3a87ad;
+  font-size: 14px;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
 #wrapper {
 	width: 300px;
 	height: 400px;

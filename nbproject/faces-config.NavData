@@ -3,9 +3,9 @@
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
         <Node id="relatorios_resultado.xhtml" x="243" y="227" zoom="true"/>
-        <Node id="agendar.xhtml" x="710" y="15" zoom="true"/>
         <Node id="footer.xhtml" x="29" y="24" zoom="true"/>
-        <Node id="login.xhtml" x="37" y="539" zoom="true"/>
+        <Node id="agendar.xhtml" x="710" y="15" zoom="true"/>
+        <Node id="login.xhtml" x="35" y="518" zoom="true"/>
         <Node id="relatorios.xhtml" x="279" y="339" zoom="true"/>
         <Node id="head.xhtml" x="443" y="18" zoom="true"/>
         <Node id="consultas_age.xhtml" x="400" y="150" zoom="true"/>

@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+  <f:metadata>
+    <f:event type="preRenderView" listener="#{Usuario.verificaLogin()}"/>
+  </f:metadata> 
   <h:head>
     <meta charset="utf-8" />
     <title>SAEC</title>
@@ -28,9 +32,11 @@
                         <legend>Médico</legend>
                         <h:inputHidden value="#{Medico.medico.idMedico}" id="id" />
                         <label for="cad-med-form:nome"><span style="color: red;">*</span> Nome</label>
-                        <h:inputText value="#{Medico.medico.nome}" id="nome" style="width:400px" />
+                        <h:inputText value="#{Medico.medico.nome}" id="nome" style="width:200px" maxlength="50" required="true" requiredMessage="Campo obrigatório" />
+                        <h:message for="nome" styleClass="alert alert-danger pull-right" style="margin-top: 0px; list-style: none; margin-right: 15px; padding: 4px 10px 4px 10px;" />
                         <label for="cad-med-form:crm"><span style="color: red;">*</span> CRM</label>
-                        <h:inputText value="#{Medico.medico.crm}" id="crm" style="width:150px" />
+                        <h:inputText value="#{Medico.medico.crm}" id="crm" style="width:150px" maxlength="20" required="true" requiredMessage="Campo obrigatório" />
+                        <h:message for="crm" styleClass="alert alert-danger pull-right" style="margin-top: 0px; list-style: none; margin-right: 65px; padding: 4px 10px 4px 10px;" />
                         </fieldset>
                         <label><span style="color: red;">*</span> Campos obrigatórios</label>
                         <center>

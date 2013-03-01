@@ -6,7 +6,6 @@
         <h:outputStylesheet name="style.css" library="css" />
 
         <meta charset="utf-8" />
-        <meta http-equiv="refresh" content="15" /> 
         <title>SAEC - Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Sistema para Agendamento de Exames Clínicos" />
@@ -19,8 +18,8 @@
                 campo.attr(atributo, valor);
             }
             $(document).ready(function() {
-                add_atributo_form("login-form", "usuario", "placeholder", "Usuário");
-                add_atributo_form("login-form", "senha", "placeholder", "Senha");
+                add_atributo_form("login-form", "j_username", "placeholder", "Usuário");
+                add_atributo_form("login-form", "j_password", "placeholder", "Senha");
                 $(".username").focus(function() {
                     $(".user-icon").css("left","-48px");
                 });
@@ -41,13 +40,19 @@
         <div id="wrapper">
             <div class="user-icon"></div>
             <div class="pass-icon"></div>
-            <h:form id="login-form" class="login-form" action="" method="post">
+            <h:form id="login-form" class="login-form">
                 <div class="header">
                     <h2>SAEC - Login</h2>
                 </div>
                 <div class="content">
-                    <h:inputText class="input username" value="#{Usuario.usuario.usuario}" id="usuario" />
-                    <h:inputSecret class="input password" value="#{Usuario.usuario.senha}" id="senha" />
+                    <h:inputText id="j_username" class="input username" value="#{Usuario.usuario.usuario}" required="true" requiredMessage="Digite um usuário" maxlength="20" />
+                    <div style="margin-top: 8px;">
+                        <h:message for="j_username" class="alert" style="margin-left: 60px;" />
+                    </div>
+                    <h:inputSecret id="j_password" class="input password" value="#{Usuario.usuario.senha}" required="true" requiredMessage="Digite uma senha" maxlength="20" />
+                    <div style="margin-top: 8px;">
+                        <h:message for="j_password" class="alert" style="margin-left: 60px;" />
+                    </div>
                 </div>
                 <div class="footer">
                     <h:commandButton action="#{Usuario.verificaLogin()}" value="Entrar" class="button" />

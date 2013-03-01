@@ -39,43 +39,40 @@ public class PacienteBean implements Serializable{
     }
     
     public void cadastrar(){
-        if(!paciente.getNome().trim().isEmpty()){
+        FacesContext contexto = FacesContext.getCurrentInstance();
+        FacesMessage msg;
+        if(paciente.getNome().isEmpty()){
+            msg = new FacesMessage("Preencha os campos obrigatórios");
+            contexto.addMessage("cad-pac-form", msg);
+        }else{
             PacienteDAO pacienteDAO = new PacienteDAO();
             if(pacienteDAO.cadastrar(paciente)){
                 paciente = new Paciente();
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Operação realizada com sucesso.");
+                msg = new FacesMessage("Operação realizada com sucesso");
                 contexto.addMessage("cad-pac-form", msg);
             }else{
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Erro ao inserir no banco de dados.");
+                msg = new FacesMessage("Erro ao inserir no banco de dados");
                 contexto.addMessage("cad-pac-form", msg);
             }
-        }
-        else {
-            FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios.");
-            contexto.addMessage("cad-pac-form", msg);
         }
     }
     
     public void alterarDados(){
+        FacesContext contexto = FacesContext.getCurrentInstance();
+        FacesMessage msg;
         if(!paciente.getNome().trim().isEmpty()){
             PacienteDAO pacienteDAO = new PacienteDAO();
             if(pacienteDAO.alterar(paciente)){
                 paciente = new Paciente();
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Operação realizada com sucesso.");
+                msg = new FacesMessage("Operação realizada com sucesso.");
                 contexto.addMessage("cad-pac-form", msg);
             }else{
-                FacesContext contexto = FacesContext.getCurrentInstance();
-                FacesMessage msg = new FacesMessage("Erro ao inserir no banco de dados.");
+                msg = new FacesMessage("Erro ao inserir no banco de dados.");
                 contexto.addMessage("cad-pac-form", msg);
             }
         }
         else {
-            FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage msg = new FacesMessage("Preencha os campos obrigatórios.");
+            msg = new FacesMessage("Preencha os campos obrigatórios.");
             contexto.addMessage("cad-pac-form", msg);
         }
     }

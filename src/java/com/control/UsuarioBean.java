@@ -7,7 +7,13 @@ package com.control;
 import com.DAO.UsuarioDAO;
 import com.model.Usuario;
 import com.sun.faces.context.SessionMap;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 /**
@@ -16,7 +22,7 @@ import javax.faces.context.FacesContext;
  */
 public class UsuarioBean implements Serializable{
     private Usuario usuario;
-
+    
     public UsuarioBean() {
         usuario = new Usuario();
     }
@@ -29,6 +35,11 @@ public class UsuarioBean implements Serializable{
         this.usuario = usuario;
     }
     
+    public String getUsuarioLogado(){
+        Usuario usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        return usuario.getUsuario();
+    }
+    
     public void cadastrar(){
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.cadastrar(usuario);
@@ -36,16 +47,36 @@ public class UsuarioBean implements Serializable{
     }
     
     public String verificaLogin(){
-        FacesContext context = FacesContext.getCurrentInstance();
-        SessionMap session;
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        if(context.getExternalContext().getSessionMap().containsKey("usuario")){
+        FacesContext contexto = FacesContext.getCurrentInstance();
+        Map<String, Object> sessao = contexto.getExternalContext().getSessionMap();
+        if(sessao.containsKey("usuario")){
+            return null;
+        }
+        else if(usuario.getUsuario() == null || usuario.getSenha() == null){
+            try{
+                ExternalContext contextoExterno = contexto.getExternalContext();
+                contextoExterno.redirect("faces/login.xhtml");
+            }
+            catch(IOException e){
+                System.out.println("Erro: " + e.getMessage());
+            }
+            return null;
+        }
+        else if(usuarioDAO.verificaLogin(usuario)){
+            sessao.put("usuario", usuario);
             return "Login_OK";
-        }else if(usuarioDAO.verificaLogin(usuario)){
-            context.getExternalContext().getSessionMap().put("usuario", usuario);
-            return "Login_OK";
-        }else{
-            return "Login_ERROR";
-        }   
+        }
+        else{
+            FacesMessage msg = new FacesMessage("Login incorreto");
+            contexto.addMessage("form_login", msg);
+            return null;
+        }
     }
+    
+    public void deslogar(){
+        FacesContext contexto = FacesContext.getCurrentInstance();
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("usuario");
+    }
+
 }
