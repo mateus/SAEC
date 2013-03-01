@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <h:outputStylesheet name="style.css" library="css" />
 
@@ -33,7 +34,13 @@
                 $(".password").blur(function() {
                     $(".pass-icon").css("left","0px");
                 });
-            });
+                
+                $(".alert-user").focus(function(){
+                    $("div").animate({
+                      width:'toggle'
+                    });
+                  });
+             });
         </script>
     </h:head>
     <h:body>
@@ -45,20 +52,19 @@
                     <h2>SAEC - Login</h2>
                 </div>
                 <div class="content">
-                    <h:inputText id="j_username" class="input username" value="#{Usuario.usuario.usuario}" required="true" requiredMessage="Digite um usuário" maxlength="20" />
-                    <div style="margin-top: 8px;">
-                        <h:message for="j_username" class="alert" style="margin-left: 60px;" />
-                    </div>
-                    <h:inputSecret id="j_password" class="input password" value="#{Usuario.usuario.senha}" required="true" requiredMessage="Digite uma senha" maxlength="20" />
-                    <div style="margin-top: 8px;">
-                        <h:message for="j_password" class="alert" style="margin-left: 60px;" />
-                    </div>
+                    <h:inputText id="j_username" class="input username" value="#{Usuario.usuario.usuario}" required="true" requiredMessage="Forneça um usuário" maxlength="20" />
+                    <h:inputSecret id="j_password" class="input password" value="#{Usuario.usuario.senha}" required="true" requiredMessage="Forneça uma Senha" maxlength="20" />
                 </div>
                 <div class="footer">
                     <h:commandButton action="#{Usuario.verificaLogin()}" value="Entrar" class="button" />
                     <h:commandButton action="#{Usuario.cadastrar()}" value="Cadastrar" class="register" />
                 </div>
             </h:form>
+            <div style="margin-top: 10px; text-align: center;">
+                <h:messages for="login-form" class="alert" style="list-style: none;" />
+                <h:message for="j_username" class="alert" />
+                <h:message for="j_password" class="alert" />
+             </div>
         </div>
         <ui:include src="footer.xhtml" />
     </h:body>

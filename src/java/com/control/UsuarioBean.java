@@ -44,6 +44,9 @@ public class UsuarioBean implements Serializable{
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.cadastrar(usuario);
         usuario = new Usuario();
+        FacesContext contexto = FacesContext.getCurrentInstance();
+        FacesMessage msg = new FacesMessage("Usuário cadastrado com sucesso");
+        contexto.addMessage("login-form", msg);
     }
     
     public String verificaLogin(){
@@ -68,8 +71,8 @@ public class UsuarioBean implements Serializable{
             return "Login_OK";
         }
         else{
-            FacesMessage msg = new FacesMessage("Login incorreto");
-            contexto.addMessage("form_login", msg);
+            FacesMessage msg = new FacesMessage("Usuário ou Senha incorretos");
+            contexto.addMessage("login-form", msg);
             return null;
         }
     }

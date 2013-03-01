@@ -15,14 +15,12 @@ body {
 }
 
 .alert {
-  padding: 3px 5px 5px 3px;
+  padding: 4px 6px 4px 6px;
+  margin: 0px 2px 0px 2px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  background-color: #fcf8e3;
-  border: 1px solid #fbeed5;
-  color: #3a87ad;
+  color: #444;
   font-size: 14px;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+  background-color: #C1CEFF;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
@@ -159,7 +157,7 @@ footer a:active { text-decoration : underline; color: #fff}
 }
 
 .pass-icon {
-	top:192px;
+	top:193px;
 	background: rgba(65,72,72,0.75) url(../resources/img/pass-icon.png) no-repeat center;
 }
 
